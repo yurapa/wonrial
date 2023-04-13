@@ -1,6 +1,6 @@
 # WONRIAL ENTERPRISES LTD
 
-Production domain: [wonrial.com](https://wonrial.com).
+Production domain: [wonrial.com](https://wonrial.com)
 
 ## Available Scripts
 
@@ -31,6 +31,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[Create-React-App documentation](https://create-react-app.dev/docs/getting-started)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[React Ru documentation](https://ru.reactjs.org/docs/getting-started.html)
+
+To learn React, check out the [React documentation](https://react.dev/learn)
+
+React Tutorial [w3schools](https://www.w3schools.com/react/)
