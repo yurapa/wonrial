@@ -1,0 +1,19 @@
+.btn {
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-light, #fff);;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: rgb(28, 43, 61);
+  border-radius: 4px;
+  padding: 8px 32px;
+}
+
+.btn:hover {
+  background-color: rgb(44, 65, 90);
+}
+

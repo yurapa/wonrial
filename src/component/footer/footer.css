@@ -1,0 +1,20 @@
+.footer {
+  display: flex;
+  font-size: 14px;
+  color: rgb(150, 150, 150);
+  background-color: rgb(22, 22, 22);
+  padding-top: 48px;
+}
+
+.footer p {
+  margin-bottom: 12px;
+}
+
+.footer__contact {
+  text-align: left;
+}
+
+.footer__copyright {
+  align-self: center;
+  text-align: right;
+}
