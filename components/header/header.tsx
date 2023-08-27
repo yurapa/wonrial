@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}>
-          <Link href="/">WONRIAL</Link>
+        <Link href="/">WONRIAL</Link>
       </div>
 
       <nav className={styles.header__nav} role="navigation">
