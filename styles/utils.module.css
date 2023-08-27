@@ -1,0 +1,52 @@
+.pageSub {
+  margin-top: 96px;
+}
+
+/* Image */
+
+.img_circle {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  margin-bottom: 24px;
+}
+
+.img_rectangle {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  margin-bottom: 24px;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Grid */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 24px;
+  margin: 0 auto 48px auto;
+}
+
+.container_col {
+  flex-direction: row;
+  gap: 48px;
+}
+
+.col_center {
+  text-align: center;
+}
+
+.col4 {
+  max-width: 33.33333333333333%;
+  flex-basis: 33.33333333333333%;
+}
+
+.col6 {
+  max-width: 50%;
+  flex-basis: 50%;
+}
