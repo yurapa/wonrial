@@ -1,11 +1,11 @@
+import cx from 'classnames';
 import Image from "next/image";
 import Head from 'next/head';
-import cx from 'classnames';
 
+import Layout from '../layout/layout/layout';
 import Banner from '../components/banner/banner';
 import { Button } from '../components/button';
 
-import Layout from '../components/layout/layout';
 import utilStyles from '../styles/utils.module.css';
 
 export default function Home() {

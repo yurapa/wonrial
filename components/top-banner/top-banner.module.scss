@@ -1,0 +1,17 @@
+.topBanner {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(243, 244, 246);
+  color: rgb(64, 71, 86);
+
+  a {
+    color: rgb(20, 158, 202);
+    margin-left: 8px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
