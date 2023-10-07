@@ -58,8 +58,8 @@ export default function Home() {
           />
           <h3>Satisfaction Guaranteed</h3>
           <p>
-            The world of technology can be fast-paced and scary. That's why our goal is to provide an experience that is
-            tailored to your company's needs. No matter the budget, we pride ourselves on providing professional
+            The world of technology can be fast-paced and scary. That&apos;s why our goal is to provide an experience that is
+            tailored to your company&apos;s needs. No matter the budget, we pride ourselves on providing professional
             customer service. We guarantee you will be satisfied with our work.
           </p>
           <Button.$ link="/contact" label="Contact Us" />

@@ -6,7 +6,10 @@ import '@/styles/global.css';
 export const metadata: Metadata = {
   title: 'Wonrial',
   description: 'WONRIAL ENTERPRISES LTD official web-sait',
-}
+  icons: {
+    icon: '/favicon.png'
+  }
+};
 
 export default function RootLayout({
   children,
@@ -17,5 +20,5 @@ export default function RootLayout({
     <html lang="en">
       <body>{children}</body>
     </html>
-  )
+  );
 }
