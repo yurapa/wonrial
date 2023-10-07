@@ -1,7 +1,8 @@
 # WONRIAL ENTERPRISES LTD
 
-Production domain: [wonrial.com](https://wonrial.com)
-Dev domain: [yurapa.github.io](https://yurapa.github.io)
+- Production domain: [wonrial.com](https://wonrial.com)
+- Dev domains: [yurapa.github.io](https://yurapa.github.io), [web-wonrial.vercel.app](https://web-wonrial.vercel.app/)
+
 
 ### Packages:
 
