@@ -1,20 +1,20 @@
 import cx from 'classnames';
-import Image from "next/image";
-import Head from 'next/head';
+import { Metadata } from 'next';
+import Image from 'next/image';
 
-import Layout from '../layout/layout/layout';
-import Banner from '../components/banner/banner';
-import { Button } from '../components/button';
+import Layout from '@/layout/layout/layout';
+import { Banner } from '@/components/banner';
+import { Button } from '@/components/button';
 
-import utilStyles from '../styles/utils.module.css';
+import utilStyles from '@/styles/utils.module.css';
+
+export const metadata: Metadata = {
+  title: 'Home page :: Wonrial',
+};
 
 export default function Home() {
   return (
     <Layout home>
-      <Head>
-        <title>Home page :: Wonrial</title>
-      </Head>
-
       <Banner />
 
       <h2>About Us</h2>

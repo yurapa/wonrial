@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import cx from 'classnames';
 
-import Header from '../header/header';
-import Footer from '../footer/footer';
-import TopBanner from '../../components/top-banner/top-banner';
+import Header from '@/layout/header/header';
+import Footer from '@/layout/footer/footer';
+import { TopBanner } from '@/components/top-banner';
 
-import utilStyles from '../../styles/utils.module.css';
+import utilStyles from '@/styles/utils.module.css';
 
 export default function Layout({ children, home }: { children: React.ReactNode; home?: boolean }) {
   return (

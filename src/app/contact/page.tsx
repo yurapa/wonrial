@@ -1,18 +1,18 @@
-import Head from 'next/head';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Layout from '../layout/layout/layout';
+import Layout from '@/layout/layout/layout';
 
-import utilStyles from '../styles/utils.module.css';
+import utilStyles from '@/styles/utils.module.css';
+
+export const metadata: Metadata = {
+    title: 'Contact Us :: Wonrial',
+};
 
 export default function Contact() {
   return (
     <Layout>
-      <Head>
-        <title>Contact Us :: Wonrial</title>
-      </Head>
-
       <h2>Contact Us</h2>
       <div className={utilStyles.container}>
         <p>

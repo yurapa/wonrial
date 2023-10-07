@@ -1,6 +1,14 @@
 # WONRIAL ENTERPRISES LTD
 
 Production domain: [wonrial.com](https://wonrial.com)
+Dev domain: [yurapa.github.io](https://yurapa.github.io)
+
+### Packages:
+
+- next-auth - for authentication
+- bcrypt - for hash generation and password verification
+- zod - for easy data validation
+- mongodb - for database access (MongoDB)
 
 ## Available Scripts
 
@@ -28,13 +36,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-[Create-React-App documentation](https://create-react-app.dev/docs/getting-started)
-
-[React Ru documentation](https://ru.reactjs.org/docs/getting-started.html)
-
-To learn React, check out the [React documentation](https://react.dev/learn)
-
-React Tutorial [w3schools](https://www.w3schools.com/react/)

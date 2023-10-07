@@ -1,6 +1,6 @@
 import styles from './top-banner.module.scss';
 
-export default function TopBanner() {
+export function TopBanner() {
   return (
     <div className={styles.topBanner}>
       <div>Support Ukraine 🇺🇦</div>

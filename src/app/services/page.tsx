@@ -1,17 +1,18 @@
 import cx from 'classnames';
-import Head from 'next/head';
+import { Metadata } from 'next';
 import Image from 'next/image';
 
-import Layout from '../layout/layout/layout';
+import Layout from '@/layout/layout/layout';
 
-import utilStyles from '../styles/utils.module.css';
+import utilStyles from '@/styles/utils.module.css';
+
+export const metadata: Metadata = {
+  title: 'Our Services :: Wonrial',
+};
 
 export default function Services() {
   return (
     <Layout>
-      <Head>
-        <title>Our Services :: Wonrial</title>
-      </Head>
       <div className={utilStyles.pageSub}>
         <h2>Our Services</h2>
 

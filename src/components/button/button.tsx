@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 
 import styles from './button.module.scss';
@@ -9,7 +9,8 @@ export namespace Button {
     link: string;
   }>;
 
-  export const $: FC<Props> = memo((props) => {
+
+  export const $: FC<Props> = ((props) => {
     const { label, link } = props;
 
     return (

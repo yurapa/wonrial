@@ -1,6 +1,6 @@
 import styles from './banner.module.scss';
 
-export default function Banner() {
+export function Banner() {
   return (
     <div className={styles.banner}>
       <div className={styles.banner__text}>

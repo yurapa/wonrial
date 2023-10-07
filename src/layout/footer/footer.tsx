@@ -1,6 +1,6 @@
 import cx from 'classnames';
 
-import utilStyles from '../../styles/utils.module.css';
+import utilStyles from '@/styles/utils.module.css';
 import styles from './footer.module.scss';
 
 export default function Footer() {
