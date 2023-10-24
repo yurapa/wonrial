@@ -1,7 +1,9 @@
 # WONRIAL ENTERPRISES LTD
 
 - Production domain: [wonrial.com](https://wonrial.com)
-- Dev domains: [yurapa.github.io](https://yurapa.github.io), [web-wonrial.vercel.app](https://web-wonrial.vercel.app/)
+- Development domains:
+  - ReactJS + React Router DOM: [yurapa.github.io](https://yurapa.github.io)
+  - ReactJS + NextJS [web-wonrial.vercel.app](https://web-wonrial.vercel.app/)
 
 ### Packages:
 
