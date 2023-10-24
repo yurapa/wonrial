@@ -1,7 +1,8 @@
-import cx from 'classnames';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import cx from 'classnames';
 
+import { createTranslation } from '@/i18n/server';
 import Layout from '@/layout/layout/layout';
 
 import utilStyles from '@/styles/utils.module.css';
@@ -10,11 +11,13 @@ export const metadata: Metadata = {
   title: 'Our Services :: Wonrial',
 };
 
-export default function Services() {
+export default async function Services({ params: { locale } }: { params: { locale: string } }) {
+  const { t } = await createTranslation(locale, 'common');
+
   return (
     <Layout>
       <div className={utilStyles.pageSub}>
-        <h2>Our Services</h2>
+        <h2>{t('services.title')}</h2>
 
         <div className={cx(utilStyles.container, utilStyles.container_col)}>
           <div className={cx(utilStyles.col_center, utilStyles.col6)}>

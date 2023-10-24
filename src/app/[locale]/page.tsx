@@ -1,7 +1,8 @@
-import cx from 'classnames';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import cx from 'classnames';
 
+import { createTranslation } from '@/i18n/server';
 import Layout from '@/layout/layout/layout';
 import { Banner } from '@/components/banner';
 import { Button } from '@/components/button';
@@ -12,12 +13,14 @@ export const metadata: Metadata = {
   title: 'Home page :: Wonrial',
 };
 
-export default function Home() {
-  return (
-    <Layout home>
-      <Banner />
+export default async function Page({ params: { locale } }: { params: { locale: string } }) {
+  const { t } = await createTranslation(locale, 'common');
 
-      <h2>About Us</h2>
+  return (
+    <Layout isHomePage>
+      <Banner locale={locale} />
+
+      <h2>{t('about.title')}</h2>
 
       <div className={cx(utilStyles.container, utilStyles.container_col)}>
         <div className={cx(utilStyles.col_center, utilStyles.col4)}>
@@ -58,9 +61,9 @@ export default function Home() {
           />
           <h3>Satisfaction Guaranteed</h3>
           <p>
-            The world of technology can be fast-paced and scary. That&apos;s why our goal is to provide an experience that is
-            tailored to your company&apos;s needs. No matter the budget, we pride ourselves on providing professional
-            customer service. We guarantee you will be satisfied with our work.
+            The world of technology can be fast-paced and scary. That&apos;s why our goal is to provide an experience
+            that is tailored to your company&apos;s needs. No matter the budget, we pride ourselves on providing
+            professional customer service. We guarantee you will be satisfied with our work.
           </p>
           <Button.$ link="/contact" label="Contact Us" />
         </div>

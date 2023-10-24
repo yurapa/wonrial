@@ -3,13 +3,18 @@
 - Production domain: [wonrial.com](https://wonrial.com)
 - Dev domains: [yurapa.github.io](https://yurapa.github.io), [web-wonrial.vercel.app](https://web-wonrial.vercel.app/)
 
-
 ### Packages:
 
-- next-auth - for authentication
-- bcrypt - for hash generation and password verification
-- zod - for easy data validation
-- mongodb - for database access (MongoDB)
+- i18next - Internationalization
+- next-auth - for authentication ?
+- mongodb - for database access (MongoDB) ?
+
+### Multilingual / Internationalization:
+
+In this project, I use a path-based strategy to determine the locale of our web application. Implementing this strategy in Next.js is easy because the framework follows a convention for creating paths. I created a [locale] folder and place all our pages inside it.
+- [i18n with Next.js 13 and app directory / App Router](https://locize.com/blog/next-13-app-dir-i18n/)
+- [Build a multilingual NextJS app using the new app directory](https://carlogino.com/blog/nextjs13-i18n)
+- [NextJS - Internationalization](https://nextjs.org/docs/app/building-your-application/routing/internationalization)
 
 ## Available Scripts
 
@@ -35,5 +40,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

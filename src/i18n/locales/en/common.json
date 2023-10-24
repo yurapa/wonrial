@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "homePageBanner": {
+    "title": "Professional Technology Assistance",
+    "subTitle": "We make technology accessible!"
+  },
+  "about": {
+    "title": "About Us"
+  },
+  "services": {
+    "title": "Our Services"
+  },
+  "contact": {
+    "title": "Contact Us"
+  }
+}

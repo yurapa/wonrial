@@ -1,27 +1,38 @@
+'use client';
+
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { useTranslation } from '@/i18n/client';
+import type { LocaleTypes } from '@/i18n/settings';
+import LanguageSwitcher from '@/components/language-switcher/language-switcher';
 
 import styles from './header.module.scss';
 
 export default function Header() {
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = useTranslation(locale, 'common');
+
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}>
-        <Link href="/">WONRIAL</Link>
+        <Link href={`/${locale}`}>WONRIAL</Link>
       </div>
 
       <nav className={styles.header__nav} role="navigation">
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href={`/${locale}`}>{t('nav.home')}</Link>
           </li>
           <li>
-            <Link href="/services">Services</Link>
+            <Link href={`/${locale}/services`}>{t('nav.services')}</Link>
           </li>
           <li>
-            <Link href="/contact">Contact</Link>
+            <Link href={`/${locale}/contact`}>{t('nav.contact')}</Link>
           </li>
         </ul>
       </nav>
+
+      <LanguageSwitcher />
     </header>
   );
 }

@@ -2,18 +2,22 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { createTranslation } from '@/i18n/server';
 import Layout from '@/layout/layout/layout';
 
 import utilStyles from '@/styles/utils.module.css';
 
 export const metadata: Metadata = {
-    title: 'Contact Us :: Wonrial',
+  title: 'Contact Us :: Wonrial',
 };
 
-export default function Contact() {
+export default async function Contact({ params: { locale } }: { params: { locale: string } }) {
+  const { t } = await createTranslation(locale, 'common');
+
   return (
     <Layout>
-      <h2>Contact Us</h2>
+      <h2>{t('contact.title')}</h2>
+
       <div className={utilStyles.container}>
         <p>
           Let us tailor a service package that meets your needs. Tell us a little about your business, and we will get
