@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import { useTranslation } from '@/i18n/client';
 import type { LocaleTypes } from '@/i18n/settings';
 import LanguageSwitcher from '@/components/language-switcher/language-switcher';
+import Login from '@/layout/login/login';
 
 import styles from './header.module.scss';
 
@@ -31,6 +32,8 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+
+      <Login />
 
       <LanguageSwitcher />
     </header>

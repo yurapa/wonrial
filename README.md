@@ -8,8 +8,7 @@
 ### Packages:
 
 - i18next - Internationalization
-- next-auth - for authentication ?
-- mongodb - for database access (MongoDB) ?
+- react-icons - icons for the fast development
 
 ### Multilingual / Internationalization:
 
