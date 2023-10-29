@@ -9,6 +9,7 @@
 
 - i18next - Internationalization
 - react-icons - icons for the fast development
+- tailwind (postcss, autoprefixer) - utility-first CSS framework
 
 ### Multilingual / Internationalization:
 
