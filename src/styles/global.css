@@ -3,14 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --text-color-rgb: 94, 94, 94;
 }
 
-@media (prefers-color-scheme: dark) {
+/*
+@media (prefers-color-scheme: dark)
   :root {
-    --foreground-rgb: 255, 255, 255;
+    --text-color-rgb: 247, 247, 247;
   }
 }
+*/
 
 *,
 ::before,
@@ -31,16 +33,11 @@ td {
   border: 0;
 }
 
-:root {
-  --text-color-dark: rgb(94, 94, 94);
-  --text-color-light: rgb(247, 247, 247);
-}
-
 body {
   font-family: Helvetica, arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--text-color-rgb));
   line-height: 1.5;
 }
 
