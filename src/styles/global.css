@@ -3,16 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --text-color-rgb: 94, 94, 94;
+  --foreground-rgb: 94, 94, 94;
 }
 
-/*
-@media (prefers-color-scheme: dark)
-  :root {
-    --text-color-rgb: 247, 247, 247;
-  }
+[data-theme='dark'] {
+  --foreground-rgb: 250, 250, 250;
 }
-*/
 
 *,
 ::before,
@@ -34,10 +30,10 @@ td {
 }
 
 body {
+  color: rgb(var(--foreground-rgb));
   font-family: Helvetica, arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(var(--text-color-rgb));
   line-height: 1.5;
 }
 

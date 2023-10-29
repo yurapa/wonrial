@@ -9,6 +9,7 @@ import { useTranslation } from '@/i18n/client';
 import type { LocaleTypes } from '@/i18n/settings';
 import Login from '@/layout/login/login';
 import LanguageSwitcher from '@/components/language-switcher/language-switcher';
+import ThemeSwitcher from '@/components/theme-switcher/theme-switcher';
 
 export default function Header() {
   const locale = useParams()?.locale as LocaleTypes;
@@ -20,7 +21,7 @@ export default function Header() {
   };
 
   return (
-    <nav className="sticky top-0 flex items-center flex-wrap bg-gray-800/90 p-3">
+    <nav className="sticky top-0 w-full flex items-center flex-wrap bg-gray-800/90 p-3">
       <Link href={`/${locale}`} className="inline-flex items-center p-2 mr-4">
         <span className="text-xl text-white font-bold uppercase tracking-wide">WONRIAL</span>
       </Link>
@@ -32,8 +33,7 @@ export default function Header() {
         <GiHamburgerMenu size={24} />
       </button>
 
-      {/*Note that in this div we will use a ternary operator to decide whether or not to display the content of the div  */}
-      <div className={`${showMobileMenu ? '' : 'hidden'}   w-full lg:inline-flex lg:flex-grow lg:w-auto`}>
+      <div className={`${showMobileMenu ? '' : 'hidden'} w-full lg:inline-flex lg:flex-grow lg:w-auto`}>
         <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
           <Link
             href={`/${locale}`}
@@ -57,6 +57,8 @@ export default function Header() {
       </div>
 
       <Login />
+
+      <ThemeSwitcher />
 
       <LanguageSwitcher />
     </nav>

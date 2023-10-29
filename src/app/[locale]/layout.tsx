@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Metadata } from 'next';
 import { dir } from 'i18next';
 
+import { Providers } from '@/app/providers';
 import Header from '@/layout/header/header';
 import Footer from '@/layout/footer/footer';
 import { TopBanner } from '@/components/top-banner';
@@ -26,12 +27,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang={locale} dir={dir(locale)}>
-      <body>
-        <TopBanner />
-        <Header />
-        {children}
-        <Footer />
-        <div id="modal-root" />
+      <body className="bg-white dark:bg-gray-900">
+        <Providers>
+          <TopBanner />
+          <Header />
+          {children}
+          <Footer />
+          <div id="modal-root" />
+        </Providers>
       </body>
     </html>
   );

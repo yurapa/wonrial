@@ -10,6 +10,7 @@
 - i18next - Internationalization
 - react-icons - icons for the fast development
 - tailwind (postcss, autoprefixer) - utility-first CSS framework
+- next-themes - an abstraction for themes in your Next.js app
 
 ### Multilingual / Internationalization:
 
