@@ -12,6 +12,12 @@
 - tailwind (postcss, autoprefixer) - utility-first CSS framework
 - next-themes - an abstraction for themes in your Next.js app
 
+### Theme:
+inspired by these two themes:
+- [Crypto](https://uideck.com/templates/crypto-tailwind/)
+- [Startup](https://nextjstemplates.com/templates/startup)
+- [Startup Pro](https://nextjstemplates.com/templates/saas-starter-startup)
+
 ### Multilingual / Internationalization:
 
 In this project, I use a path-based strategy to determine the locale of our web application. Implementing this strategy in Next.js is easy because the framework follows a convention for creating paths. I created a [locale] folder and place all our pages inside it.

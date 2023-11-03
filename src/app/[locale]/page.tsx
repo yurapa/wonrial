@@ -4,8 +4,9 @@ import cx from 'classnames';
 
 import { createTranslation } from '@/i18n/server';
 import Layout from '@/layout/layout/layout';
-import { Banner } from '@/components/banner';
 import { Button } from '@/components/button';
+import Hero from '@/components/hero';
+import ScrollUp from '@/components/scroll-to-top/scroll-up';
 
 import utilStyles from '@/styles/utils.module.css';
 
@@ -18,7 +19,8 @@ export default async function Page({ params: { locale } }: { params: { locale: s
 
   return (
     <Layout isHomePage>
-      <Banner locale={locale} />
+      <ScrollUp />
+      <Hero locale={locale} />
 
       <h2>{t('about.title')}</h2>
 
