@@ -70,6 +70,34 @@ export default async function Page({ params: { locale } }: { params: { locale: s
           <Button.$ link="/contact" label="Contact Us" />
         </div>
       </div>
+
+      <h2>Our tech stack</h2>
+      React
+      Creating responsive and performant web and native applications by using the world's most popular JavaScript library.
+
+      Next.js
+      Empowering developers building Full Stack web applications by extending the latest React features, integrating powerful JavaScript tooling, and providing a superior DX.
+
+      Node.js
+      Building the right backend for your application with the power of concurrent and non-blocking JavaScript.
+
+      TypeScript
+      Writting more reliable and maintainable code by utilizing static types, resulting in easier debugging, refactoring, and collaboration within your team.
+
+      Material UI (MUI)
+      Leveraging pre-built, responsive, accurate, and accessible UI components to accelerate your application's high-quality Frontend design and UX, while also allowing for unique customization and flexibility.
+
+      NestJS
+      Enables developers to easily create highly efficient, reliable, and scalable server-side applications with a progressive Node.js framework.
+
+      GraphQL or RESTful APIs
+      Exposing flexible and efficient APIs on top of GraphQL resolvers or RESTful endpoints to enhance your application's data management capabilities.
+
+      PostgreSQL or MongoDB
+      Utilizing both SQL-based and NoSQL DBs provides flexibility and scalability, allowing us to choose the best fit for our client’s unique data needs.
+
+      Cloud Hosting
+      Allows companies to focus on their core operations while avoiding infrastructure management headaches and enjoying scalability, flexibility, high availability, and cost-effectiveness.
     </Layout>
   );
 }
