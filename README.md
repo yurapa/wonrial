@@ -1,6 +1,29 @@
 # WONRIAL ENTERPRISES LTD
 
-Production domain: [wonrial.com](https://wonrial.com)
+- Production domain: [wonrial.com](https://wonrial.com)
+- Development domains:
+  - ReactJS + React Router DOM: [yurapa.github.io](https://yurapa.github.io)
+  - ReactJS + NextJS [wonrial.vercel.app](https://wonrial.vercel.app/)
+
+### Packages:
+
+- i18next - Internationalization
+- react-icons - icons for the fast development
+- tailwind (postcss, autoprefixer) - utility-first CSS framework
+- next-themes - an abstraction for themes in your Next.js app
+
+### Theme:
+inspired by these two themes:
+- [Crypto](https://uideck.com/templates/crypto-tailwind/)
+- [Startup](https://nextjstemplates.com/templates/startup)
+- [Startup Pro](https://nextjstemplates.com/templates/saas-starter-startup)
+
+### Multilingual / Internationalization:
+
+In this project, I use a path-based strategy to determine the locale of our web application. Implementing this strategy in Next.js is easy because the framework follows a convention for creating paths. I created a [locale] folder and place all our pages inside it.
+- [i18n with Next.js 13 and app directory / App Router](https://locize.com/blog/next-13-app-dir-i18n/)
+- [Build a multilingual NextJS app using the new app directory](https://carlogino.com/blog/nextjs13-i18n)
+- [NextJS - Internationalization](https://nextjs.org/docs/app/building-your-application/routing/internationalization)
 
 ## Available Scripts
 
@@ -26,15 +49,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-[Create-React-App documentation](https://create-react-app.dev/docs/getting-started)
-
-[React Ru documentation](https://ru.reactjs.org/docs/getting-started.html)
-
-To learn React, check out the [React documentation](https://react.dev/learn)
-
-React Tutorial [w3schools](https://www.w3schools.com/react/)
