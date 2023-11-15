@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Metadata } from 'next';
 import { dir } from 'i18next';
 import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 
 import { Providers } from '@/app/providers';
 import Header from '@/layout/header';
@@ -40,6 +41,7 @@ export default function RootLayout({
           <ScrollToTop />
           <div id="modal-root" />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
