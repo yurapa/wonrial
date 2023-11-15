@@ -2,13 +2,12 @@ import { ReactNode } from 'react';
 import { Metadata } from 'next';
 import { dir } from 'i18next';
 import { Inter } from 'next/font/google';
-import { GoogleTagManager } from '@next/third-parties/google';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 import { Providers } from '@/app/providers';
 import Header from '@/layout/header';
 import Footer from '@/layout/footer';
-import { ScrollToTopButton } from '@/components/scroll-to-top';
+import ScrollToTop from '@/components/scroll-to-top';
 import { TopBanner } from '@/components/top-banner';
 
 import '@/styles/normalize.css';
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
   title: 'WONRIAL',
   description: 'WONRIAL ENTERPRISES LTD official web-sait',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.png',
   },
 };
 
@@ -31,21 +30,18 @@ export default function RootLayout({
   children: ReactNode;
   params: { locale: string };
 }) {
-  const isGTM = !!process.env.NEXT_PUBLIC_GTM_ID;
-
   return (
     <html lang={locale} dir={dir(locale)}>
-      {isGTM && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as string} />}
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
         <Providers>
           <TopBanner />
           <Header />
           {children}
           <Footer />
-          <ScrollToTopButton />
+          <ScrollToTop />
           <div id="modal-root" />
         </Providers>
-        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
