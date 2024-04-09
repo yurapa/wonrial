@@ -2,8 +2,9 @@
 
 - Production domain: [wonrial.com](https://wonrial.com)
 - Development domains:
-  - ReactJS + React Router DOM: [yurapa.github.io](https://yurapa.github.io)
-  - ReactJS + NextJS [wonrial.vercel.app](https://wonrial.vercel.app/)
+  - Compiled 1st version (ReactJS + React Router DOM): [yurapa.github.io](https://yurapa.github.io)
+  - Vercel - main: [wonrial.vercel.app](https://wonrial.vercel.app)
+  - Vercel - develop: [wonrial-dev.vercel.app](https://wonrial-dev.vercel.app)
 
 ### Packages:
 
