@@ -31,9 +31,11 @@ export default function RootLayout({
   children: ReactNode;
   params: { locale: string };
 }) {
+  const isGTM = !!process.env.NEXT_PUBLIC_GTM_ID;
+  
   return (
     <html lang={locale} dir={dir(locale)}>
-      <GoogleTagManager gtmId="GTM-535W854V" />
+      {isGTM && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as string} />}
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
         <Providers>
           <TopBanner />
