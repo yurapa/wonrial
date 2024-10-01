@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "services": "Services",
+    "ai": "AI",
     "contact": "Contact"
   },
   "homePageBanner": {
@@ -13,6 +14,9 @@
   },
   "services": {
     "title": "Our Services"
+  },
+  "ai": {
+    "title": "AI"
   },
   "contact": {
     "title": "Contact Us"

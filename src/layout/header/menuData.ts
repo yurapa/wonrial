@@ -12,6 +12,11 @@ const menuData: Menu[] = [
     path: '/services',
   },
   {
+    id: 3,
+    title: 'nav.ai',
+    path: '/ai',
+  },
+  {
     id: 33,
     title: 'nav.contact',
     path: '/contact',
