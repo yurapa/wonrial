@@ -12,6 +12,7 @@
 - react-icons - icons for the fast development
 - tailwind (postcss, autoprefixer) - utility-first CSS framework
 - next-themes - an abstraction for themes in your Next.js app
+- ai, @ai-sdk/openai - AI SDK + OpenAI Provider
 
 ### Theme:
 inspired by these two themes:
