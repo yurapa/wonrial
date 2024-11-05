@@ -1,5 +1,5 @@
-import { TestimonialItem } from "@/types/testimonial";
-import Image from "next/image";
+import { TestimonialItem } from '@/types/testimonial';
+import Image from 'next/image';
 
 const starIcon = (
   <svg width="18" height="16" viewBox="0 0 18 16" className="fill-current">
@@ -10,7 +10,7 @@ const starIcon = (
 const Testimonial = ({ testimonial }: { testimonial: TestimonialItem }) => {
   const { star, name, image, content, designation } = testimonial;
 
-  let ratingIcons = [];
+  const ratingIcons = [];
   for (let index = 0; index < star; index++) {
     ratingIcons.push(
       <span key={index} className="text-yellow">
@@ -22,7 +22,7 @@ const Testimonial = ({ testimonial }: { testimonial: TestimonialItem }) => {
   return (
     <div className="w-full">
       <div
-        className="wow fadeInUp shadow-two dark:shadow-three dark:hover:shadow-gray-dark rounded-sm bg-white p-8 duration-300 hover:shadow-one dark:bg-dark lg:px-5 xl:px-8"
+        className="wow fadeInUp rounded-sm bg-white p-8 shadow-two duration-300 hover:shadow-one dark:bg-dark dark:shadow-three dark:hover:shadow-gray-dark lg:px-5 xl:px-8"
         data-wow-delay=".1s"
       >
         <div className="mb-5 flex items-center space-x-1">{ratingIcons}</div>
@@ -34,9 +34,7 @@ const Testimonial = ({ testimonial }: { testimonial: TestimonialItem }) => {
             <Image src={image} alt={name} fill />
           </div>
           <div className="w-full">
-            <h3 className="mb-1 text-lg font-semibold text-dark dark:text-white lg:text-base xl:text-lg">
-              {name}
-            </h3>
+            <h3 className="mb-1 text-lg font-semibold text-dark dark:text-white lg:text-base xl:text-lg">{name}</h3>
             <p className="text-sm text-body-color">{designation}</p>
           </div>
         </div>
