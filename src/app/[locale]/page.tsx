@@ -4,7 +4,7 @@ import Hero from '@/components/hero';
 import Features from '@/components/features';
 import ReadyToHelp from '@/components/ready-to-help';
 import Technologies from '@/components/technologies';
-import { ScrollUpDefault } from '@/components/scroll-to-top';
+import ScrollUp from '@/components/scroll-to-top/scroll-up';
 import About1 from '@/components/about/about-1';
 import About2 from '@/components/about/about-2';
 import Pricing from '@/components/pricing';
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default async function Page({ params: { locale } }: { params: { locale: string } }) {
   return (
     <Layout isHomePage>
-      <ScrollUpDefault />
+      <ScrollUp />
       <Hero locale={locale} />
       <Features />
       <ReadyToHelp />

@@ -44,27 +44,27 @@ export default function Header() {
     <header
       className={`header sticky left-0 top-0 z-40 flex w-full items-center ${
         sticky
-          ? 'bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition duration-300 dark:bg-gray-dark dark:shadow-sticky-dark'
+          ? 'dark:bg-gray-dark dark:shadow-sticky-dark bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition duration-300'
           : 'bg-transparent'
       }`}
     >
       <div className="container">
         <div className="relative -mx-4 flex items-center justify-between">
           {/*<nav className="sticky top-0 w-full flex items-center flex-wrap bg-gray-800/90 p-3">*/}
-          <Link href={`/${locale}`} className="mr-4 inline-flex items-center p-2">
-            <span className="text-xl font-bold uppercase tracking-wide text-black dark:text-white">WONRIAL</span>
+          <Link href={`/${locale}`} className="inline-flex items-center p-2 mr-4">
+            <span className="text-xl text-black dark:text-white font-bold uppercase tracking-wide">WONRIAL</span>
           </Link>
 
           <div className="flex w-full items-center justify-between px-4">
             <button
-              className="hover:bg-grey-600 ml-auto inline-flex rounded p-3 text-white outline-none hover:text-white lg:hidden"
+              className="inline-flex p-3 hover:bg-grey-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none"
               onClick={handleClick}
             >
               <GiHamburgerMenu size={24} />
             </button>
 
-            <div className={`${showMobileMenu ? '' : 'hidden'} w-full lg:inline-flex lg:w-auto lg:flex-grow`}>
-              <div className="flex w-full flex-col items-start lg:ml-auto lg:inline-flex lg:h-auto lg:w-auto lg:flex-row lg:items-center">
+            <div className={`${showMobileMenu ? '' : 'hidden'} w-full lg:inline-flex lg:flex-grow lg:w-auto`}>
+              <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
                 <nav>
                   <ul className="block lg:flex lg:space-x-12">
                     {menuData.map((menuItem, index) => (
