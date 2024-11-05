@@ -1,9 +1,3 @@
-.home {
-  /*margin-top: -64px;*/
-}
-
-/* Image */
-
 .img_circle {
   width: 100%;
   height: auto;
@@ -15,10 +9,10 @@
 .img_rectangle {
   width: 100%;
   height: auto;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 1 / 1;
   margin-bottom: 24px;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
 }
 
 /* Grid */

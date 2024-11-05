@@ -44,7 +44,7 @@ export default function Header() {
     <header
       className={`header sticky left-0 top-0 z-40 flex w-full items-center ${
         sticky
-          ? 'dark:bg-gray-dark dark:shadow-sticky-dark  bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition duration-300'
+          ? 'dark:bg-gray-dark dark:shadow-sticky-dark bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition duration-300'
           : 'bg-transparent'
       }`}
     >

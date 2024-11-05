@@ -16,7 +16,8 @@
     "title": "Наші послуги"
   },
   "ai": {
-    "title": "AI"
+    "title": "AI Chatbot",
+    "description": "AI Chatbot is a conversational agent that interacts with users to provide them with information, answer their questions, and help them accomplish tasks."
   },
   "contact": {
     "title": "Контакти"

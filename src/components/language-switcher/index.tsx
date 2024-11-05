@@ -19,7 +19,7 @@ export default function LanguageSwitcher() {
 
   return (
     <div>
-      <select onChange={handleLocaleChange} value={params.locale}>
+      <select onChange={handleLocaleChange} value={params.locale} style={{ background: 'none' }}>
         <option value="en">&#127468;&#127463; English</option>
         <option value="ru">&#127987;&#65039; Русский</option>
         <option value="ua">&#127482;&#127462; Українська</option>
