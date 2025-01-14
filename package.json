@@ -1,6 +1,7 @@
 {
-  "name": "web-wonrial",
+  "name": "wonrial",
   "version": "25.01.0",
+  "description": "WONRIAL ENTERPRISES LTD",
   "author": "yurapa",
   "private": false,
   "scripts": {
