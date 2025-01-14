@@ -1,7 +1,7 @@
 # WONRIAL ENTERPRISES LTD
 
-- Production domain: [wonrial.com](https://wonrial.com)
-- Development domain: [wonrial.vercel.app](https://wonrial.vercel.app)
+- Production URL: [wonrial.com](https://wonrial.com)
+- Development URL: [wonrial.vercel.app](https://wonrial.vercel.app)
 
 ### Packages:
 

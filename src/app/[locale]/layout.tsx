@@ -8,7 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Providers } from '@/app/providers';
 import Header from '@/layout/header';
 import Footer from '@/layout/footer';
-import ScrollToTop from '@/components/scroll-to-top';
+import { ScrollToTopButton } from '@/components/scroll-to-top';
 import { TopBanner } from '@/components/top-banner';
 
 import '@/styles/normalize.css';
@@ -32,7 +32,7 @@ export default function RootLayout({
   params: { locale: string };
 }) {
   const isGTM = !!process.env.NEXT_PUBLIC_GTM_ID;
-  
+
   return (
     <html lang={locale} dir={dir(locale)}>
       {isGTM && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as string} />}
@@ -42,7 +42,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
-          <ScrollToTop />
+          <ScrollToTopButton />
           <div id="modal-root" />
         </Providers>
         <SpeedInsights />
