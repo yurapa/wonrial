@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 import { createTranslation } from '@/i18n/server';
 import Layout from '@/layout/layout/layout';
-import { AIChat } from '@/components/ai/ai-chat';
+import { AIChat } from '@/components/ai';
 
 import utilStyles from '@/styles/utils.module.css';
 
