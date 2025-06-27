@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: 'https://www.wonrial.com/services',
+      url: 'https://acme.com/services',
       lastModified: new Date(),
       alternates: {
         languages: {
@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: 'https://www.wonrial.com/ai',
+      url: 'https://acme.com/ai',
       lastModified: new Date(),
       alternates: {
         languages: {
@@ -33,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: 'https://www.wonrial.com/contact',
+      url: 'https://acme.com/contact',
       lastModified: new Date(),
       alternates: {
         languages: {
