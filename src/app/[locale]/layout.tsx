@@ -8,7 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Providers } from '@/app/providers';
 import Header from '@/layout/header';
 import Footer from '@/layout/footer';
-import ScrollToTop from '@/components/scroll-to-top';
+import { ScrollToTopButton } from '@/components/scroll-to-top';
 import { TopBanner } from '@/components/top-banner';
 
 import '@/styles/normalize.css';
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: 'WONRIAL',
   description: 'WONRIAL ENTERPRISES LTD official web-sait',
   icons: {
-    icon: '/favicon.png',
+    icon: '/favicon.ico',
   },
 };
 
@@ -31,16 +31,18 @@ export default function RootLayout({
   children: ReactNode;
   params: { locale: string };
 }) {
+  const isGTM = !!process.env.NEXT_PUBLIC_GTM_ID;
+
   return (
     <html lang={locale} dir={dir(locale)}>
-      <GoogleTagManager gtmId="GTM-535W854V" />
+      {isGTM && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as string} />}
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
         <Providers>
           <TopBanner />
           <Header />
           {children}
           <Footer />
-          <ScrollToTop />
+          <ScrollToTopButton />
           <div id="modal-root" />
         </Providers>
         <SpeedInsights />
