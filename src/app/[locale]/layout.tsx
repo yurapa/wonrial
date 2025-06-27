@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: 'WONRIAL',
   description: 'WONRIAL ENTERPRISES LTD official web-sait',
   icons: {
-    icon: '/favicon.png',
+    icon: '/favicon.ico',
   },
 };
 
