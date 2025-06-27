@@ -2,6 +2,7 @@
   "nav": {
     "home": "Главная",
     "services": "Услуги",
+    "ai": "AI",
     "contact": "Контакты"
   },
   "homePageBanner": {
@@ -13,6 +14,10 @@
   },
   "services": {
     "title": "Наши услуги"
+  },
+  "ai": {
+    "title": "AI Chatbot",
+    "description": "AI Chatbot is a conversational agent that interacts with users to provide them with information, answer their questions, and help them accomplish tasks."
   },
   "contact": {
     "title": "Контакты"

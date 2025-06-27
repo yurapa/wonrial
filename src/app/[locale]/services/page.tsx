@@ -17,7 +17,6 @@ export default async function Services({ params: { locale } }: { params: { local
   return (
     <Layout>
       <div className={utilStyles.pageSub}>
-
         <section className="relative z-10 overflow-hidden pt-28 lg:pt-[80px]">
           <div className="container">
             <div className="-mx-4 flex flex-wrap items-center">
@@ -26,9 +25,7 @@ export default async function Services({ params: { locale } }: { params: { local
                   <h1 className="mb-5 text-2xl font-bold text-black dark:text-white sm:text-3xl">
                     {t('services.title')}
                   </h1>
-                  <p className="text-base font-medium leading-relaxed text-body-color">
-                    Our services,
-                  </p>
+                  <p className="text-base font-medium leading-relaxed text-body-color">Our services,</p>
                 </div>
               </div>
             </div>

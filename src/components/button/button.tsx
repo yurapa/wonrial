@@ -9,8 +9,7 @@ export namespace Button {
     link: string;
   }>;
 
-
-  export const $: FC<Props> = ((props) => {
+  export const $: FC<Props> = (props) => {
     const { label, link } = props;
 
     return (
@@ -18,5 +17,5 @@ export namespace Button {
         {label}
       </Link>
     );
-  });
+  };
 }
