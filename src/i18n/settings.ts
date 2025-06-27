@@ -1,7 +1,7 @@
 import type { InitOptions } from 'i18next';
 
 export const defaultLocale = 'en';
-export const locales = [defaultLocale, 'ru', 'ua'];
+export const locales = [defaultLocale, 'ru', 'uk'];
 export type LocaleTypes = (typeof locales)[number];
 export const defaultNS = 'common';
 
