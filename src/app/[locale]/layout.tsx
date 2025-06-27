@@ -2,8 +2,7 @@ import { ReactNode } from 'react';
 import { Metadata } from 'next';
 import { dir } from 'i18next';
 import { Inter } from 'next/font/google';
-import { GoogleTagManager } from '@next/third-parties/google';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 import { Providers } from '@/app/providers';
 import Header from '@/layout/header';
@@ -33,7 +32,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang={locale} dir={dir(locale)}>
-      <GoogleTagManager gtmId="GTM-535W854V" />
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
         <Providers>
           <TopBanner />
@@ -43,7 +41,7 @@ export default function RootLayout({
           <ScrollToTop />
           <div id="modal-root" />
         </Providers>
-        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
