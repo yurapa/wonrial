@@ -42,9 +42,9 @@ export default function Header() {
 
   return (
     <header
-      className={`header sticky left-0 top-0 z-40 flex w-full items-center ${
+      className={`header sticky top-0 left-0 z-40 flex w-full items-center ${
         sticky
-          ? 'bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition duration-300 dark:bg-gray-dark dark:shadow-sticky-dark'
+          ? 'shadow-sticky dark:bg-gray-dark/80 dark:shadow-sticky-dark bg-white/80 backdrop-blur-sm transition duration-300'
           : 'bg-transparent'
       }`}
     >
@@ -52,7 +52,7 @@ export default function Header() {
         <div className="relative -mx-4 flex items-center justify-between">
           {/*<nav className="sticky top-0 w-full flex items-center flex-wrap bg-gray-800/90 p-3">*/}
           <Link href={`/${locale}`} className="mr-4 inline-flex items-center p-2">
-            <span className="text-xl font-bold uppercase tracking-wide text-black dark:text-white">WONRIAL</span>
+            <span className="text-xl font-bold tracking-wide text-black uppercase dark:text-white">WONRIAL</span>
           </Link>
 
           <div className="flex w-full items-center justify-between px-4">

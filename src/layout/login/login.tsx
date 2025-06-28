@@ -21,7 +21,7 @@ export default function Login() {
       <button
         aria-label="login"
         onClick={handleOpenModal}
-        className="bg-gray-2 dark:bg-dark-bg flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-black dark:text-white md:h-12 md:w-12"
+        className="bg-gray-2 dark:bg-dark-bg flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-black md:h-12 md:w-12 dark:text-white"
       >
         <CiLogin size={24} />
       </button>
@@ -35,7 +35,7 @@ export default function Login() {
           >
             <LoginForm />
 
-            <p className="text-center text-base font-medium text-body-color">
+            <p className="text-body-color text-center text-base font-medium">
               Don’t you have an account?{' '}
               <Link href="/" className="text-primary hover:underline">
                 Sign up

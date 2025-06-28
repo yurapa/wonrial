@@ -7,7 +7,7 @@ export default function Layout({ children, isHomePage }: { children: ReactNode; 
 
       {!isHomePage && (
         <div>
-          <span className="absolute left-0 top-0 z-[-1]">
+          <span className="absolute top-0 left-0 z-[-1]">
             <svg width="287" height="254" viewBox="0 0 287 254" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path opacity="0.1" d="M286.5 0.5L-14.5 254.5V69.5L286.5 0.5Z" fill="url(#paint0_linear_111:578)" />
               <defs>
@@ -25,7 +25,7 @@ export default function Layout({ children, isHomePage }: { children: ReactNode; 
               </defs>
             </svg>
           </span>
-          <span className="absolute right-0 top-0 z-[-1]">
+          <span className="absolute top-0 right-0 z-[-1]">
             <svg width="628" height="258" viewBox="0 0 628 258" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 opacity="0.1"

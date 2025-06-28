@@ -20,34 +20,34 @@ const About2 = () => {
                 src="/images/about/about-image-2-dark.svg"
                 alt="about image"
                 fill
-                className="hidden drop-shadow-three dark:block dark:drop-shadow-none"
+                className="drop-shadow-three hidden dark:block dark:drop-shadow-none"
               />
             </div>
           </div>
           <div className="w-full px-4 lg:w-1/2">
             <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
               <div className="mb-9">
-                <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
+                <h3 className="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl dark:text-white">
                   Bug free code
                 </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
+                <p className="text-body-color text-base leading-relaxed font-medium sm:text-lg sm:leading-relaxed">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                   dolore magna aliqua.
                 </p>
               </div>
               <div className="mb-9">
-                <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
+                <h3 className="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl dark:text-white">
                   Premier support
                 </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
+                <p className="text-body-color text-base leading-relaxed font-medium sm:text-lg sm:leading-relaxed">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
                 </p>
               </div>
               <div className="mb-1">
-                <h3 className="mb-4 text-xl font-bold text-black dark:text-white sm:text-2xl lg:text-xl xl:text-2xl">
+                <h3 className="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl dark:text-white">
                   Next.js
                 </h3>
-                <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed">
+                <p className="text-body-color text-base leading-relaxed font-medium sm:text-lg sm:leading-relaxed">
                   Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt consectetur adipiscing elit setim.
                 </p>
               </div>
