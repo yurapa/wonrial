@@ -1,40 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --container-center: true;
+  --container-padding: 1rem;
 
-@layer base {
-  body {
-    font-family: 'Inter', sans-serif;
+  /* Colors */
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-white: #ffffff;
+  --color-black: #121723;
+  --color-dark: #1d2430;
+  --color-primary: #4a6cf7;
+  --color-yellow: #fbb040;
+  --color-body-color: #788293;
+  --color-body-color-dark: #959cb1;
+  --color-gray-dark: #1e232e;
+  --color-gray-light: #f0f2f9;
+  --color-stroke: #e3e8ef;
+  --color-stroke-dark: #353943;
+  --color-bg-color-dark: #171c28;
+
+  --color-background-light: #fcfcfc;
+  --color-background-dark: rgb(18 23 35);
+
+  /* Box Shadows */
+  --shadow-signUp: 0px 5px 10px rgba(4, 10, 34, 0.2);
+  --shadow-one: 0px 2px 3px rgba(7, 7, 77, 0.05);
+  --shadow-two: 0px 5px 10px rgba(6, 8, 15, 0.1);
+  --shadow-three: 0px 5px 15px rgba(6, 8, 15, 0.05);
+  --shadow-sticky: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  --shadow-sticky-dark: inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
+  --shadow-feature-2: 0px 10px 40px rgba(48, 86, 211, 0.12);
+  --shadow-submit: 0px 5px 20px rgba(4, 10, 34, 0.1);
+  --shadow-submit-dark: 0px 5px 20px rgba(4, 10, 34, 0.1);
+  --shadow-btn: 0px 1px 2px rgba(4, 10, 34, 0.15);
+  --shadow-btn-hover: 0px 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-btn-light: 0px 1px 2px rgba(0, 0, 0, 0.1);
+
+  /* Drop Shadows */
+  --drop-shadow-three: 0px 5px 15px rgba(6, 8, 15, 0.05);
+}
+
+@layer utilities {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1536px;
+    }
   }
 }
 
 :root {
   --foreground-rgb: 94, 94, 94;
+  --background: var(--color-background-light);
 }
 
-[data-theme='dark'] {
+.dark {
   --foreground-rgb: 250, 250, 250;
+  --background: var(--color-background-dark);
+}
+
+@layer base {
+  html {
+    transition: background-color 0.3s ease;
+  }
+
+  body {
+    background-color: var(--background);
+    transition: background-color 0.3s ease;
+  }
 }
 
 *,
 ::before,
 ::after {
   box-sizing: border-box;
-}
-
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
-  margin: 0;
-  padding: 0;
-  border: 0;
 }
 
 body {

@@ -2,7 +2,7 @@ export const AiChatButton = () => {
   return (
     <button
       type="submit"
-      className="flex h-[48px] w-full max-w-[48px] items-center justify-center rounded-md bg-primary text-white shadow-md transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp disabled:opacity-50"
+      className="bg-primary hover:bg-opacity-80 hover:shadow-signUp flex h-[48px] w-full max-w-[48px] items-center justify-center rounded-md text-white shadow-md transition duration-300 ease-in-out disabled:opacity-50"
     >
       <svg
         width="32"

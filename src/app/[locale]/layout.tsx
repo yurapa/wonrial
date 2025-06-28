@@ -5,11 +5,11 @@ import { Inter } from 'next/font/google';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { Providers } from '@/app/providers';
 import Header from '@/layout/header';
 import Footer from '@/layout/footer';
-import { ScrollToTopButton } from '@/components/scroll-to-top';
+import { Providers } from '@/app/providers';
 import { TopBanner } from '@/components/top-banner';
+import { ScrollToTopButton } from '@/components/scroll-to-top';
 
 import '@/styles/normalize.css';
 import '@/styles/global.css';
@@ -24,19 +24,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const isGTM = !!process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
     <html lang={locale} dir={dir(locale)}>
       {isGTM && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as string} />}
-      <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
+      <body className={inter.className}>
         <Providers>
           <TopBanner />
           <Header />

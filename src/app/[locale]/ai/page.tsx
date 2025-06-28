@@ -12,7 +12,8 @@ export const metadata: Metadata = {
     'Here you can chat with our AI to get answers to your questions. If you have any questions, feel free to ask',
 };
 
-export default async function AI({ params: { locale } }: { params: { locale: string } }) {
+export default async function AI({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const { t } = await createTranslation(locale, 'common');
   const isAI = !!process.env.GROQ_API_KEY;
 
@@ -23,8 +24,8 @@ export default async function AI({ params: { locale } }: { params: { locale: str
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 md:w-8/12 lg:w-7/12">
               <div className="mb-8 max-w-[570px] md:mb-0 lg:mb-12">
-                <h1 className="mb-5 text-2xl font-bold text-black dark:text-white sm:text-3xl">{t('ai.title')}</h1>
-                <p className="text-base font-medium leading-relaxed text-body-color">{t('ai.description')}</p>
+                <h1 className="mb-5 text-2xl font-bold text-black sm:text-3xl dark:text-white">{t('ai.title')}</h1>
+                <p className="text-body-color text-base leading-relaxed font-medium">{t('ai.description')}</p>
               </div>
             </div>
           </div>

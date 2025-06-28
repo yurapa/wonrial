@@ -4,7 +4,7 @@ import data from './data';
 
 const Testimonials = () => {
   return (
-    <section className="relative z-10 bg-gray-light py-16 dark:bg-bg-color-dark md:py-20 lg:py-28">
+    <section className="bg-gray-light dark:bg-bg-color-dark relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
           title="What Our Clients Says"
@@ -18,7 +18,7 @@ const Testimonials = () => {
           ))}
         </div>
       </div>
-      <div className="absolute right-0 top-5 z-[-1]">
+      <div className="absolute top-5 right-0 z-[-1]">
         <svg width="238" height="531" viewBox="0 0 238 531" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect
             opacity="0.3"
