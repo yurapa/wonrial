@@ -13,6 +13,13 @@ import { ScrollUpDefault } from '@/components/scroll-to-top';
 
 export const metadata: Metadata = {
   title: 'Home page :: Wonrial',
+  alternates: {
+    canonical: '/',
+    languages: {
+      'ru': '/ru',
+      'uk': '/uk',
+    },
+  },
 };
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {

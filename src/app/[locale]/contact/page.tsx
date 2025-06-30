@@ -8,6 +8,13 @@ import ContactInfo from '@/components/contact/contact-info';
 
 export const metadata: Metadata = {
   title: 'Contact Us :: Wonrial',
+  alternates: {
+    canonical: '/contact',
+    languages: {
+      'ru': '/ru/contact',
+      'uk': '/uk/contact',
+    },
+  },
 };
 
 export default async function Contact({ params }: { params: Promise<{ locale: string }> }) {

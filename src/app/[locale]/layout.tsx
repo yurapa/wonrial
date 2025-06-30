@@ -19,6 +19,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'WONRIAL',
   description: 'WONRIAL ENTERPRISES LTD official web-sait',
+  metadataBase: new URL('https://www.wonrial.com'),
   icons: {
     icon: '/favicon.ico',
   },

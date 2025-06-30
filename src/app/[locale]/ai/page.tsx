@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   title: 'AI ChatBot :: Wonrial',
   description:
     'Here you can chat with our AI to get answers to your questions. If you have any questions, feel free to ask',
+  alternates: {
+    canonical: '/ai',
+    languages: {
+      'ru': '/ru/ai',
+      'uk': '/uk/ai',
+    },
+  },
 };
 
 export default async function AI({ params }: { params: Promise<{ locale: string }> }) {

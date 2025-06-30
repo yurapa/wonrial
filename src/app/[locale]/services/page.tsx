@@ -9,6 +9,13 @@ import utilStyles from '@/styles/utils.module.css';
 
 export const metadata: Metadata = {
   title: 'Our Services :: Wonrial',
+  alternates: {
+    canonical: '/services',
+    languages: {
+      'ru': '/ru/services',
+      'uk': '/uk/services',
+    },
+  },
 };
 
 export default async function Services({ params }: { params: Promise<{ locale: string }> }) {
