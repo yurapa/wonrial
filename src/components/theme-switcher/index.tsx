@@ -27,7 +27,7 @@ export default function ThemeSwitcher() {
         <button
           aria-label="theme toggler"
           onClick={() => setTheme('light')}
-          className="bg-gray-2 dark:bg-dark-bg flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-black dark:text-white md:h-12 md:w-12"
+          className="bg-gray-2 dark:bg-dark-bg flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-black md:h-12 md:w-12 dark:text-white"
         >
           <FaSun className="mx-3" role="button" />
         </button>
@@ -37,7 +37,7 @@ export default function ThemeSwitcher() {
         <button
           aria-label="theme toggler"
           onClick={() => setTheme('dark')}
-          className="bg-gray-2 dark:bg-dark-bg flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-black dark:text-white md:h-12 md:w-12"
+          className="bg-gray-2 dark:bg-dark-bg flex h-9 w-9 cursor-pointer items-center justify-center rounded-full text-black md:h-12 md:w-12 dark:text-white"
         >
           <FaMoon className="mx-3" role="button" />
         </button>

@@ -7,13 +7,13 @@ const ContactInfo = () => {
 
   return (
     <div
-      className="wow fadeInUp relative z-10 rounded-sm bg-white p-8 shadow-three dark:bg-gray-dark sm:p-11 lg:p-8 xl:p-11"
+      className="wow fadeInUp shadow-three dark:bg-gray-dark relative z-10 rounded-sm bg-white p-8 sm:p-11 lg:p-8 xl:p-11"
       data-wow-delay=".2s"
     >
-      <h3 className="mb-4 text-2xl font-bold leading-tight text-black dark:text-white">
+      <h3 className="mb-4 text-2xl leading-tight font-bold text-black dark:text-white">
         Let us tailor a service package that meets your needs.
       </h3>
-      <p className="mb-11 border-b border-body-color border-opacity-25 pb-11 text-base leading-relaxed text-body-color dark:border-white dark:border-opacity-25">
+      <p className="border-body-color border-opacity-25 text-body-color dark:border-opacity-25 mb-11 border-b pb-11 text-base leading-relaxed dark:border-white">
         Tell us a little about your business, and we will get back to you with some ideas as soon as possible.
       </p>
 
@@ -34,7 +34,7 @@ const ContactInfo = () => {
       </p>
 
       <div>
-        <span className="absolute left-2 top-7">
+        <span className="absolute top-7 left-2">
           <svg width="57" height="65" viewBox="0 0 57 65" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               opacity="0.5"
@@ -80,7 +80,7 @@ const ContactInfo = () => {
           </svg>
         </span>
 
-        <span className="absolute right-2 top-[140px]">
+        <span className="absolute top-[140px] right-2">
           <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               opacity="0.5"
@@ -103,7 +103,7 @@ const ContactInfo = () => {
           </svg>
         </span>
 
-        <span className="absolute right-0 top-0">
+        <span className="absolute top-0 right-0">
           <svg width="162" height="91" viewBox="0 0 162 91" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.3">
               <path

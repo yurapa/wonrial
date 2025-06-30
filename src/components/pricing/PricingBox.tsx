@@ -1,3 +1,5 @@
+import React from 'react';
+
 const PricingBox = (props: {
   price: string;
   duration: string;
@@ -10,7 +12,7 @@ const PricingBox = (props: {
   return (
     <div className="w-full">
       <div
-        className="wow fadeInUp relative z-10 rounded-sm bg-white px-8 py-10 shadow-three hover:shadow-one dark:bg-gray-dark dark:shadow-two dark:hover:shadow-gray-dark"
+        className="wow fadeInUp shadow-three hover:shadow-one dark:bg-gray-dark dark:shadow-two dark:hover:shadow-gray-dark relative z-10 rounded-sm bg-white px-8 py-10"
         data-wow-delay=".1s"
       >
         <div className="flex items-center justify-between">
@@ -18,16 +20,16 @@ const PricingBox = (props: {
             &euro;<span className="amount">{price}</span>
             <span className="time text-body-color">/{duration}</span>
           </h3>
-          <h4 className="mb-2 text-xl font-bold text-dark dark:text-white">{packageName}</h4>
+          <h4 className="text-dark mb-2 text-xl font-bold dark:text-white">{packageName}</h4>
         </div>
-        <p className="mb-7 text-base text-body-color">{subtitle}</p>
-        <div className="mb-8 border-b border-body-color border-opacity-10 pb-8 dark:border-white dark:border-opacity-10">
-          <button className="flex w-full items-center justify-center rounded-sm bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+        <p className="text-body-color mb-7 text-base">{subtitle}</p>
+        <div className="border-body-color border-opacity-10 dark:border-opacity-10 mb-8 border-b pb-8 dark:border-white">
+          <button className="bg-primary hover:bg-opacity-80 hover:shadow-signUp flex w-full items-center justify-center rounded-sm p-3 text-base font-semibold text-white transition duration-300 ease-in-out">
             Start Free Trial
           </button>
         </div>
         <div>{children}</div>
-        <div className="absolute bottom-0 right-0 z-[-1]">
+        <div className="absolute right-0 bottom-0 z-[-1]">
           <svg width="179" height="158" viewBox="0 0 179 158" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               opacity="0.5"
