@@ -90,11 +90,13 @@ export default [
   {
     ignores: [
       'build/**',
-      'node_modules/**', 
+      'node_modules/**',
       '**/*.test.ts',
       '**/*.test.tsx',
       'dist/**',
       '.next/**',
+      'next-env.d.ts',
+      '*.config.js',
     ],
   },
 ];

@@ -7,9 +7,9 @@ import { AIChat } from '@/components/ai';
 import utilStyles from '@/styles/utils.module.css';
 
 export const metadata: Metadata = {
-  title: 'AI ChatBot :: Wonrial',
+  title: 'AI ChatBot for Business Support | Wonrial',
   description:
-    'Here you can chat with our AI to get answers to your questions. If you have any questions, feel free to ask',
+    'Wonrial AI ChatBot – Ask Questions & Get Answers',
   alternates: {
     canonical: '/ai',
     languages: {

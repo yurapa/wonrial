@@ -19,7 +19,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'WONRIAL',
   description: 'WONRIAL ENTERPRISES LTD official web-sait',
-  metadataBase: new URL('https://www.wonrial.com'),
+  metadataBase: new URL('https://wonrial.com'),
   icons: {
     icon: '/favicon.ico',
   },
@@ -36,7 +36,7 @@ export default async function RootLayout({
   const isGTM = !!process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
-    <html lang={locale} dir={dir(locale)}>
+    <html lang={locale} dir={dir(locale)} suppressHydrationWarning>
       {isGTM && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID as string} />}
       <body className={inter.className}>
         <Providers>
