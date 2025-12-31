@@ -97,6 +97,7 @@ export default [
       '.next/**',
       'next-env.d.ts',
       '*.config.js',
+      '.claude/**',
     ],
   },
 ];
