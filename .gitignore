@@ -29,3 +29,5 @@ next-env.d.ts
 # AI
 .claude/
 CLAUDE.md
+docs/
+plans/
