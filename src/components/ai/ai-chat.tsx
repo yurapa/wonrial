@@ -1,10 +1,24 @@
 'use client';
 
-import { useChat } from 'ai/react';
+import { useChat } from '@ai-sdk/react';
+import { useState, type FormEvent } from 'react';
 import { AiChatButton } from '@/components/ai';
 
 export function AIChat() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
+  const { messages, sendMessage, status } = useChat();
+  // The hook no longer owns the input value, so the form keeps it locally.
+  const [input, setInput] = useState('');
+
+  const isLoading = status === 'submitted' || status === 'streaming';
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!input.trim() || isLoading) return;
+
+    sendMessage({ text: input });
+    setInput('');
+  };
 
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
@@ -26,7 +40,10 @@ export function AIChat() {
                 {messages.map((m) => (
                   <div key={m.id} className="mb-6 whitespace-pre-wrap">
                     {m.role === 'user' ? 'User: ' : 'AI: '}
-                    {m.content}
+                    {m.parts
+                      .filter((part) => part.type === 'text')
+                      .map((part) => part.text)
+                      .join('')}
                   </div>
                 ))}
               </div>
@@ -38,7 +55,7 @@ export function AIChat() {
                     placeholder="Ask a question..."
                     value={input}
                     disabled={isLoading}
-                    onChange={handleInputChange}
+                    onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();

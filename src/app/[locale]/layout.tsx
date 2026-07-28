@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import { dir } from 'i18next';
 import { Inter } from 'next/font/google';
 import { GoogleTagManager } from '@next/third-parties/google';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import Header from '@/layout/header';
 import Footer from '@/layout/footer';
@@ -47,7 +46,6 @@ export default async function RootLayout({
           <ScrollToTopButton />
           <div id="modal-root" />
         </Providers>
-        <SpeedInsights />
       </body>
     </html>
   );
