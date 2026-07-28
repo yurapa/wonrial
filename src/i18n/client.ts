@@ -26,17 +26,20 @@ i18next
   });
 
 export function useTranslation(lng: LocaleTypes, ns: string) {
-  const translator = useTransAlias(ns);
+  // Binding the language here keeps `t` scoped to this render. Calling
+  // changeLanguage() instead would mutate the module-level i18next instance,
+  // which the server reuses for every request: the switch resolves too late for
+  // the current response and then leaks into the next one, so a request for /ru
+  // could be served in English and the request after it in Russian.
+  const translator = useTransAlias(ns, { lng });
   const { i18n } = translator;
 
-  // Run when content is rendered on server side
-  if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
-    i18n.changeLanguage(lng);
-  } else {
+  if (!runsOnServerSide) {
     // Use our custom implementation when running on client side
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useCustomTranslationImplem(i18n, lng);
   }
+
   return translator;
 }
 
