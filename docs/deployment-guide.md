@@ -58,6 +58,15 @@ Current records:
 
 DNSSEC is off.
 
+### Zoho mailboxes
+
+Zoho Mail (Mail Free plan) serves inbound mail for the domain. There is one mailbox with two
+addresses — `admin@wonrial.com` (the mailbox address) and `info@wonrial.com` (an alias) — so
+`CONTACT_TO_EMAIL` may be either; both land in the same place. `info@wonrial.com` is also the
+production sender, which means replies to the contact-form confirmation reach a real inbox.
+
+`info-dev@wonrial.com`, the non-production sender, has no Zoho mailbox.
+
 ### Why Resend does not disturb Zoho
 
 Resend scopes its SPF and bounce MX to the `send.wonrial.com` subdomain and signs with its own
