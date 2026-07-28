@@ -29,7 +29,7 @@ export default async function Contact({ params }: { params: Promise<{ locale: st
             <div className="w-full px-4 md:w-8/12 lg:w-7/12">
               <div className="mb-8 max-w-[570px] md:mb-0 lg:mb-12">
                 <h1 className="mb-5 text-2xl font-bold text-black sm:text-3xl dark:text-white">{t('contact.title')}</h1>
-                <p className="text-body-color text-base leading-relaxed font-medium">Our Contacts,</p>
+                <p className="text-body-color text-base leading-relaxed font-medium">{t('contact.subTitle')}</p>
               </div>
             </div>
           </div>

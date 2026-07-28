@@ -33,7 +33,7 @@ export default async function Services({ params }: { params: Promise<{ locale: s
                   <h1 className="mb-5 text-2xl font-bold text-black sm:text-3xl dark:text-white">
                     {t('services.title')}
                   </h1>
-                  <p className="text-body-color text-base leading-relaxed font-medium">Our services,</p>
+                  <p className="text-body-color text-base leading-relaxed font-medium">{t('services.subTitle')}</p>
                 </div>
               </div>
             </div>
