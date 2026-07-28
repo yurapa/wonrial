@@ -23,6 +23,7 @@ npm run typecheck # Validate TypeScript
 - **Landing Page**: 7 sections (hero, features, pricing, testimonials, about, tech, CTA)
 - **Responsive**: Mobile-first Tailwind CSS design
 - **SEO**: Dynamic sitemap, robots.txt, hreflang tags for all locales
+- **Contact Form**: Resend-backed email delivery with localized auto-reply, dev/prod separated by sender and subject
 - **Analytics**: Google Tag Manager
 - **Performance**: Server Components, code splitting, Vercel edge optimization
 
@@ -42,6 +43,8 @@ npm run typecheck # Validate TypeScript
 
 ```
 GROQ_API_KEY             # Groq API key (required for chat)
+RESEND_API_KEY           # Resend API key (required for the contact form)
+CONTACT_TO_EMAIL         # Inbox that contact-form tickets are delivered to
 NEXT_PUBLIC_GTM_ID       # Google Tag Manager ID (optional)
 ```
 

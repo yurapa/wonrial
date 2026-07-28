@@ -53,6 +53,7 @@ WONRIAL is a modern Next.js 16 SaaS landing page with integrated AI chat. The ar
 │  │           API Routes (Backend)                     │   │
 │  ├────────────────────────────────────────────────────┤   │
 │  │ • /api/chat (POST) - AI streaming endpoint        │   │
+│  │ • /api/contact (POST) - contact form via Resend   │   │
 │  └────────────────────────────────────────────────────┘   │
 │                           │                               │
 │  ┌────────────────────────────────────────────────────┐   │
@@ -245,6 +246,48 @@ UI message stream; text chunks arrive progressively and are reassembled by useCh
 - llama3-8b-8192 model for fast inference
 - Error handling and fallbacks
 - Rate limiting (Groq API limits)
+
+#### `/api/contact` (POST)
+**Purpose**: Deliver contact-form submissions by email via Resend
+
+**Request**:
+```json
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "message": "Tell me about your services",
+  "locale": "uk",
+  "company": ""
+}
+```
+
+`company` is a honeypot: it is hidden from people, so a non-empty value means a bot. The
+endpoint then returns 200 without sending anything, which denies the bot a usable signal.
+
+**Response**: `{ "ok": true }`, or `{ "ok": false, "error": "invalid_input" | "email_not_configured" | "send_failed" }`
+
+**Implementation**:
+- `resend` SDK v6.18.1; the SDK reports failures through `error`, not by throwing
+- Sends two emails per submission: a ticket to `CONTACT_TO_EMAIL` with `replyTo` set to the
+  submitter, and a localized confirmation to the submitter with `replyTo` set to
+  `CONTACT_TO_EMAIL`
+- Confirmation copy comes from the existing i18n namespace via `createTranslation(locale)`,
+  with `escapeValue: false` so values are not escaped twice on the way into HTML
+- A failed confirmation is logged but still returns 200: the ticket is already delivered, so a
+  failed courtesy mail must not be reported to the visitor as a failed submission
+- Requires `RESEND_API_KEY` and `CONTACT_TO_EMAIL`
+
+**Environment separation** — `src/utils/contact-email.ts` resolves `VERCEL_ENV`:
+
+| Environment | Sender | Subject prefix | Resend tag |
+|---|---|---|---|
+| production | `info@wonrial.com` | none | `env=production` |
+| preview | `info-dev@wonrial.com` | `[PREVIEW] ` | `env=preview` |
+| local | `info-dev@wonrial.com` | `[DEVELOPMENT] ` | `env=development` |
+
+An unrecognised or missing `VERCEL_ENV` falls back to development, so an unknown value can
+never pass for production. The originating request host is recorded in the mail body for
+traceability, but never used as the control signal.
 
 ### 5. Internationalization (i18n)
 
@@ -648,6 +691,8 @@ interface MenuItem {
 ```
 GROQ_API_KEY=<groq-api-key>
 NEXT_PUBLIC_GTM_ID=<gtm-container-id>
+RESEND_API_KEY=<resend-api-key>
+CONTACT_TO_EMAIL=<inbox-for-contact-tickets>
 NODE_ENV=production
 ```
 
@@ -655,6 +700,8 @@ NODE_ENV=production
 ```
 GROQ_API_KEY=<groq-api-key>
 NEXT_PUBLIC_GTM_ID=<gtm-container-id>
+RESEND_API_KEY=<resend-api-key>
+CONTACT_TO_EMAIL=<inbox-for-contact-tickets>
 NODE_ENV=development
 ```
 
@@ -726,6 +773,12 @@ Core Web Vitals Targets:
 ├── 401: Unauthorized
 ├── 500: Server error
 └── Fallback: User-friendly message
+
+/api/contact errors:
+├── 400: invalid_input - validation failed, Resend not called
+├── 500: email_not_configured - RESEND_API_KEY or CONTACT_TO_EMAIL missing
+├── 502: send_failed - Resend rejected the notification
+└── 200: returned even when only the confirmation mail fails
 ```
 
 ## Scalability Considerations

@@ -31,7 +31,17 @@
     "emailPlaceholder": "Enter your email",
     "messageLabel": "Your Message",
     "messagePlaceholder": "Enter your Message",
-    "submit": "Submit Ticket"
+    "submit": "Submit Ticket",
+    "sending": "Sending…",
+    "success": "Thanks! Your message has been sent.",
+    "error": "Something went wrong. Please try again.",
+    "email": {
+      "subject": "We received your message",
+      "greeting": "Hi {{name}},",
+      "body": "Thanks for reaching out to WONRIAL. We received your message and will get back to you as soon as possible.",
+      "yourMessage": "Your message:",
+      "signature": "— The WONRIAL team"
+    }
   },
   "footer": {
     "quickLinks": "Quick Links",

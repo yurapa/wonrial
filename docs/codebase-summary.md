@@ -127,6 +127,21 @@ wonrial/
 - Streams response chunks to client via `toUIMessageStreamResponse()`
 - Requires `GROQ_API_KEY` env var
 
+**`src/app/api/contact/route.ts`**
+- Contact-form endpoint: validates, screens the honeypot, then sends two emails via Resend
+- Ticket to `CONTACT_TO_EMAIL` with `replyTo` = submitter; localized confirmation to the
+  submitter with `replyTo` = `CONTACT_TO_EMAIL`
+- A failed confirmation is logged but still returns 200 - the ticket is already delivered
+- Requires `RESEND_API_KEY` and `CONTACT_TO_EMAIL` env vars
+
+**`src/utils/contact-email.ts`**
+- Resolves `VERCEL_ENV` to pick the sender (`info@` in production, `info-dev@` elsewhere),
+  the subject prefix and the Resend `env` tag
+- Builds the HTML and plain-text bodies, escaping every interpolated value
+
+**`src/types/contact.ts`**
+- Submission, request and response types shared by the route and the form
+
 ### SEO & Metadata
 
 **`src/app/robots.ts`**
@@ -557,7 +572,7 @@ NODE_ENV                  # development/production
 
 - **Total Components**: 31
 - **Total Pages**: 5 (home, ai, contact, services, 404)
-- **API Routes**: 1 (/api/chat)
+- **API Routes**: 2 (/api/chat, /api/contact)
 - **Supported Locales**: 3 (en, ru, uk)
 - **TypeScript Files**: ~50+
 - **CSS Files**: 3 (global + utilities)
@@ -593,8 +608,8 @@ return <h1>{t('section.title')}</h1>
 
 ## Unresolved Questions
 
-1. **Database Backend**: Is there a backend API for contact form submissions?
-2. **Email Service**: Integration plan for contact notifications?
+1. **Database Backend**: contact submissions are emailed, not persisted - is storage wanted?
+2. **Bot protection**: only a honeypot today; Cloudflare Turnstile is the planned follow-up
 3. **Authentication**: Plan for user login/registration?
 4. **Testing**: Any test framework (Jest, Vitest) planned?
 5. **CI/CD**: GitHub Actions workflow configured?
