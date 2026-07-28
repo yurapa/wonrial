@@ -39,6 +39,7 @@ export default function Login() {
             <LoginForm />
 
             <p className="text-body-color text-center text-base font-medium">
+              Don’t you have an account?{' '}
               <Link
                 href={`/${locale}/contact#contact`}
                 onClick={handleCloseModal}
