@@ -1,7 +1,7 @@
 # WONRIAL ENTERPRISES LTD - Project Overview & PDR
 
 **Project Name**: WONRIAL
-**Version**: 25.12.11
+**Version**: 26.07.0
 **Last Updated**: 2026-07-28
 **Status**: Active Development
 **Production URL**: [wonrial.com](https://wonrial.com)
