@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useParams } from 'next/navigation';
 import { CiLogin } from 'react-icons/ci';
 import Link from 'next/link';
 import Modal from '@/components/modal/modal';
 import LoginForm from '@/layout/login/login-form';
 import Portal from '@/utils/portal';
+import type { LocaleTypes } from '@/i18n/settings';
 
 export default function Login() {
+  const locale = useParams()?.locale as LocaleTypes;
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -36,9 +39,12 @@ export default function Login() {
             <LoginForm />
 
             <p className="text-body-color text-center text-base font-medium">
-              Don’t you have an account?{' '}
-              <Link href="/" className="text-primary hover:underline">
-                Sign up
+              <Link
+                href={`/${locale}/contact#contact`}
+                onClick={handleCloseModal}
+                className="text-primary hover:underline"
+              >
+                Contact us
               </Link>
             </p>
           </Modal>
