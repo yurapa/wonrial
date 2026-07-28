@@ -9,6 +9,9 @@ export type ContactSubmission = {
 // deliberately meaningless - anything resembling `company`, `organization` or another autofill
 // token gets populated from the browser's saved address profile, which would silently discard a
 // genuine submission.
-export type ContactRequest = Partial<ContactSubmission> & { messageRef?: string };
+export type ContactRequest = Partial<ContactSubmission> & {
+  messageRef?: string;
+  turnstileToken?: string;
+};
 
-export type ContactError = 'invalid_input' | 'email_not_configured' | 'send_failed';
+export type ContactError = 'invalid_input' | 'verification_failed' | 'email_not_configured' | 'send_failed';
