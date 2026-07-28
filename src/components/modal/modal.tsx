@@ -24,7 +24,14 @@ export default function Modal({
             <div className="dark:bg-dark bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                 <div className={styles.modal__header}>
-                  <AiOutlineCloseCircle color="black" onClick={onClose} />
+                  <button
+                    type="button"
+                    aria-label="Close"
+                    onClick={onClose}
+                    className="hover:text-primary cursor-pointer text-black transition-colors duration-300 dark:text-white"
+                  >
+                    <AiOutlineCloseCircle />
+                  </button>
                 </div>
 
                 {title && (
