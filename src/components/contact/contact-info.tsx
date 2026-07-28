@@ -1,9 +1,19 @@
 'use client';
 
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 const ContactInfo = () => {
   const { theme } = useTheme();
+  // The server cannot know the theme, so the first client render has to match
+  // the server output. Only after mounting may the gradients follow the theme.
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const stopColor = mounted && theme === 'light' ? '#4A6CF7' : '#fff';
 
   return (
     <div
@@ -50,8 +60,8 @@ const ContactInfo = () => {
                 y2="15.3509"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0.62" />
-                <stop offset="1" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0" />
+                <stop stopColor={stopColor} stopOpacity="0.62" />
+                <stop offset="1" stopColor={stopColor} stopOpacity="0" />
               </linearGradient>
             </defs>
           </svg>
@@ -73,8 +83,8 @@ const ContactInfo = () => {
                 y2="10.2511"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0.62" />
-                <stop offset="1" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0" />
+                <stop stopColor={stopColor} stopOpacity="0.62" />
+                <stop offset="1" stopColor={stopColor} stopOpacity="0" />
               </linearGradient>
             </defs>
           </svg>
@@ -96,8 +106,8 @@ const ContactInfo = () => {
                 y2="26.7564"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0.62" />
-                <stop offset="1" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0" />
+                <stop stopColor={stopColor} stopOpacity="0.62" />
+                <stop offset="1" stopColor={stopColor} stopOpacity="0" />
               </linearGradient>
             </defs>
           </svg>
@@ -136,8 +146,8 @@ const ContactInfo = () => {
                 y2="237.617"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.328125" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} />
-                <stop offset="1" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0" />
+                <stop offset="0.328125" stopColor={stopColor} />
+                <stop offset="1" stopColor={stopColor} stopOpacity="0" />
               </linearGradient>
               <linearGradient
                 id="paint1_linear_1028_603"
@@ -147,8 +157,8 @@ const ContactInfo = () => {
                 y2="212.617"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.328125" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} />
-                <stop offset="1" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0" />
+                <stop offset="0.328125" stopColor={stopColor} />
+                <stop offset="1" stopColor={stopColor} stopOpacity="0" />
               </linearGradient>
               <linearGradient
                 id="paint2_linear_1028_603"
@@ -158,8 +168,8 @@ const ContactInfo = () => {
                 y2="221.617"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.328125" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} />
-                <stop offset="1" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0" />
+                <stop offset="0.328125" stopColor={stopColor} />
+                <stop offset="1" stopColor={stopColor} stopOpacity="0" />
               </linearGradient>
               <linearGradient
                 id="paint3_linear_1028_603"
@@ -169,8 +179,8 @@ const ContactInfo = () => {
                 y2="188.617"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.328125" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} />
-                <stop offset="1" stopColor={theme === 'light' ? '#4A6CF7' : '#fff'} stopOpacity="0" />
+                <stop offset="0.328125" stopColor={stopColor} />
+                <stop offset="1" stopColor={stopColor} stopOpacity="0" />
               </linearGradient>
             </defs>
           </svg>

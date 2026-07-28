@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { createTranslation } from '@/i18n/server';
 import Layout from '@/layout/layout/layout';
 import ContactInfo from '@/components/contact/contact-info';
+import ContactForm from '@/components/contact/contact-form';
 
 export const metadata: Metadata = {
   title: 'Contact Us :: Wonrial',
@@ -49,52 +50,7 @@ export default async function Contact({ params }: { params: Promise<{ locale: st
                   {t('contact.formTitle')}
                 </h2>
                 <p className="text-body-color mb-12 text-base font-medium">{t('contact.formSubTitle')}</p>
-                <form>
-                  <div className="-mx-4 flex flex-wrap">
-                    <div className="w-full px-4 md:w-1/2">
-                      <div className="mb-8">
-                        <label htmlFor="name" className="text-dark mb-3 block text-sm font-medium dark:text-white">
-                          {t('contact.nameLabel')}
-                        </label>
-                        <input
-                          type="text"
-                          placeholder={t('contact.namePlaceholder')}
-                          className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base outline-none dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
-                        />
-                      </div>
-                    </div>
-                    <div className="w-full px-4 md:w-1/2">
-                      <div className="mb-8">
-                        <label htmlFor="email" className="text-dark mb-3 block text-sm font-medium dark:text-white">
-                          {t('contact.emailLabel')}
-                        </label>
-                        <input
-                          type="email"
-                          placeholder={t('contact.emailPlaceholder')}
-                          className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base outline-none dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
-                        />
-                      </div>
-                    </div>
-                    <div className="w-full px-4">
-                      <div className="mb-8">
-                        <label htmlFor="message" className="text-dark mb-3 block text-sm font-medium dark:text-white">
-                          {t('contact.messageLabel')}
-                        </label>
-                        <textarea
-                          name="message"
-                          rows={5}
-                          placeholder={t('contact.messagePlaceholder')}
-                          className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary w-full resize-none rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base outline-none dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
-                        ></textarea>
-                      </div>
-                    </div>
-                    <div className="w-full px-4">
-                      <button className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark rounded-sm px-9 py-4 text-base font-medium text-white duration-300">
-                        {t('contact.submit')}
-                      </button>
-                    </div>
-                  </div>
-                </form>
+                <ContactForm />
               </div>
             </div>
             <div className="w-full px-4 lg:w-5/12 xl:w-4/12">
