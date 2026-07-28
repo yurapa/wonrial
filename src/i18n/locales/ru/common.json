@@ -22,6 +22,28 @@
   },
   "contact": {
     "title": "Контакты",
-    "subTitle": "Наши контакты"
+    "subTitle": "Наши контакты",
+    "formTitle": "Нужна помощь? Создайте обращение",
+    "formSubTitle": "Наша служба поддержки ответит вам по электронной почте в ближайшее время.",
+    "nameLabel": "Ваше имя",
+    "namePlaceholder": "Введите ваше имя",
+    "emailLabel": "Ваш email",
+    "emailPlaceholder": "Введите ваш email",
+    "messageLabel": "Ваше сообщение",
+    "messagePlaceholder": "Введите ваше сообщение",
+    "submit": "Отправить обращение"
+  },
+  "footer": {
+    "quickLinks": "Быстрые ссылки",
+    "terms": "Условия",
+    "supportHelp": "Поддержка и помощь",
+    "tos": "Условия обслуживания",
+    "privacyPolicy": "Политика конфиденциальности",
+    "refundPolicy": "Политика возврата",
+    "openSupportTicket": "Создать обращение",
+    "termsOfUse": "Условия использования",
+    "support247": "Поддержка 24/7",
+    "legalEntity": "Юридическое лицо, зарегистрированное по законодательству Кипра",
+    "registrationNumber": "Регистрационный номер"
   }
 }

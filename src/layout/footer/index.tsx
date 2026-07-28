@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
-export default function Footer() {
+import { createTranslation } from '@/i18n/server';
+
+export default async function Footer({ locale }: { locale: string }) {
+  const { t } = await createTranslation(locale, 'common');
+
   return (
     <>
       <footer
@@ -11,13 +15,13 @@ export default function Footer() {
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
               <div className="mb-12 max-w-[360px] lg:mb-16">
-                <Link href="/" className="text-body-color dark:text-body-color-dark mb-8 inline-block">
+                <Link href={`/${locale}`} className="text-body-color dark:text-body-color-dark mb-8 inline-block">
                   <strong>WONRIAL ENTERPRISES LTD</strong>
                 </Link>
                 <p className="text-body-color dark:text-body-color-dark mb-9 text-base leading-relaxed">
-                  Legal entity registered under the law of Cyprus
+                  {t('footer.legalEntity')}
                   <br />
-                  Registration number: HE 445780
+                  {t('footer.registrationNumber')}: HE 445780
                   {/*
                     <strong>Address:</strong> Vasili Michailidi, 9, 3026, Limassol, Cyprus
                    */}
@@ -66,30 +70,30 @@ export default function Footer() {
 
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">Quick Links</h2>
+                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">{t('footer.quickLinks')}</h2>
                 <ul>
                   <li>
                     <a
-                      href="/"
+                      href={`/${locale}`}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
-                      Home
+                      {t('nav.home')}
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/services"
+                      href={`/${locale}/services`}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
-                      Services
+                      {t('nav.services')}
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/contact"
+                      href={`/${locale}/contact`}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
-                      Contact
+                      {t('nav.contact')}
                     </a>
                   </li>
                 </ul>
@@ -98,30 +102,30 @@ export default function Footer() {
 
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">Terms</h2>
+                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">{t('footer.terms')}</h2>
                 <ul>
                   <li>
                     <a
-                      href="/"
+                      href={`/${locale}`}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
-                      TOS
+                      {t('footer.tos')}
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href={`/${locale}`}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
-                      Privacy Policy
+                      {t('footer.privacyPolicy')}
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href={`/${locale}`}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
-                      Refund Policy
+                      {t('footer.refundPolicy')}
                     </a>
                   </li>
                 </ul>
@@ -130,30 +134,30 @@ export default function Footer() {
 
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
               <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">Support & Help</h2>
+                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">{t('footer.supportHelp')}</h2>
                 <ul>
                   <li>
                     <a
-                      href="/contact"
+                      href={`/${locale}/contact`}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
-                      Open Support Ticket
+                      {t('footer.openSupportTicket')}
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href={`/${locale}`}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
-                      Terms of Use
+                      {t('footer.termsOfUse')}
                     </a>
                   </li>
                   <li>
                     <a
-                      href="/"
+                      href={`/${locale}`}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
-                      24/7 Supports
+                      {t('footer.support247')}
                     </a>
                   </li>
                 </ul>

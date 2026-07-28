@@ -42,7 +42,7 @@ export default async function RootLayout({
           <TopBanner />
           <Header />
           {children}
-          <Footer />
+          <Footer locale={locale} />
           <ScrollToTopButton />
           <div id="modal-root" />
         </Providers>
