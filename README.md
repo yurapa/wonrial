@@ -23,20 +23,20 @@ npm run typecheck # Validate TypeScript
 - **Landing Page**: 7 sections (hero, features, pricing, testimonials, about, tech, CTA)
 - **Responsive**: Mobile-first Tailwind CSS design
 - **SEO**: Dynamic sitemap, robots.txt, hreflang tags for all locales
-- **Analytics**: Google Tag Manager + Vercel Speed Insights
+- **Analytics**: Google Tag Manager
 - **Performance**: Server Components, code splitting, Vercel edge optimization
 
 ## Tech Stack
 
 | Category | Tech |
 |----------|------|
-| **Framework** | Next.js 16.1.1, React 19.2.3, TypeScript 5.9.3 |
-| **Styling** | Tailwind CSS 4.1.18, SASS 1.97.1 |
-| **i18n** | i18next 25.7.3, react-i18next 16.5.0 (3 locales) |
-| **AI** | Vercel AI SDK 4.3.19 + @ai-sdk/groq 1.2.9 |
+| **Framework** | Next.js 16.2.12, React 19.2.8, TypeScript 6.0.3 |
+| **Styling** | Tailwind CSS 4.3.3, SASS 1.102.0 |
+| **i18n** | i18next 26.3.6, react-i18next 17.0.11 (3 locales) |
+| **AI** | Vercel AI SDK 7.0.40 + @ai-sdk/groq 4.0.15 + @ai-sdk/react 4.0.43 |
 | **Theme** | next-themes 0.4.6 (dark/light mode) |
 | **Hosting** | Vercel (auto-deploy) |
-| **Dev Tools** | ESLint 9.39.2, Prettier 3.7.4 |
+| **Dev Tools** | ESLint 9.39.5, Prettier 3.9.6 |
 
 ## Environment Variables
 
@@ -52,7 +52,7 @@ src/
 ├── app/                    # Next.js App Router
 │   ├── [locale]/          # Dynamic locale routing
 │   ├── api/chat/route.ts  # Groq AI streaming endpoint
-│   └── providers.jsx      # Theme & i18n providers
+│   └── providers.tsx      # Theme & i18n providers
 ├── components/            # 31 React components (7 landing + UI + AI)
 ├── i18n/                  # Translations (EN, RU, UK)
 ├── styles/                # Tailwind CSS + global styles

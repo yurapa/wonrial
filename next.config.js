@@ -10,11 +10,8 @@ const nextConfig = {
   distDir: 'build',
   reactStrictMode: true,
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
+    includePaths: [path.join(__dirname, 'src', 'styles')],
   },
-  experimental: {
-    turbopackUseSystemTlsCerts: true,
-  }
 };
 
 export default nextConfig;
