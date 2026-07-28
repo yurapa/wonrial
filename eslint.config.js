@@ -85,6 +85,10 @@ export default [
     rules: {
       // TypeScript specific overrides
       'no-undef': 'off', // TypeScript compiler handles this
+      // The base rule cannot read type annotations and reports the parameter
+      // names of callback prop types as unused variables.
+      // @typescript-eslint/no-unused-vars above covers these files instead.
+      'no-unused-vars': 'off',
     },
   },
   {

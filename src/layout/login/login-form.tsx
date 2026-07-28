@@ -1,4 +1,4 @@
-import { useState, type Dispatch, type FormEvent, type SetStateAction } from 'react';
+import { useState, type FormEvent } from 'react';
 
 // There is no auth backend yet. Both forms behave like real ones - they validate,
 // show a short pending state and then report an outcome - but nothing leaves the
@@ -22,7 +22,7 @@ const submitClassName =
 
 type LoginFormProps = {
   mode: AuthMode;
-  onModeChange: Dispatch<SetStateAction<AuthMode>>;
+  onModeChange: (next: AuthMode) => void;
 };
 
 export default function LoginForm({ mode, onModeChange }: LoginFormProps) {
