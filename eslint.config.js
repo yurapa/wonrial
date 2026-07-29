@@ -27,17 +27,17 @@ export default [
         URL: 'readonly',
         Request: 'readonly',
         Response: 'readonly',
-        
+
         // Node.js globals
         process: 'readonly',
         Buffer: 'readonly',
         __dirname: 'readonly',
         __filename: 'readonly',
-        
+
         // TypeScript/React globals
         React: 'readonly',
         JSX: 'readonly',
-        
+
         // Next.js globals
         NodeJS: 'readonly',
       },
@@ -59,15 +59,15 @@ export default [
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
       '@typescript-eslint/restrict-template-expressions': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
-      
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+
       // React rules
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      
+
       // Next.js rules - keep the recommended set above, minus this one.
       '@next/next/no-img-element': 'off',
-      
+
       // Disable problematic rules
       'no-undef': 'off', // TypeScript handles this better
     },

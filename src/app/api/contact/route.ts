@@ -89,7 +89,8 @@ export async function POST(req: Request) {
   // Turnstile is what makes this endpoint more than an open mailer, so it is checked before
   // anything is sent - and only after the free checks above, to avoid a network round trip on
   // input that was never going to be accepted.
-  const remoteIp = req.headers.get('cf-connecting-ip') ?? req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? null;
+  const remoteIp =
+    req.headers.get('cf-connecting-ip') ?? req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? null;
 
   if (!(await verifyTurnstileToken(body.turnstileToken, remoteIp))) {
     return fail('verification_failed', 403);
