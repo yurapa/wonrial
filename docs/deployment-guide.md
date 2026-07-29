@@ -18,6 +18,33 @@ Production and Preview are genuinely separate environments, so `VERCEL_ENV` diff
 them and environment variables can be scoped per environment. `src/utils/contact-email.ts`
 relies on this to label outbound mail.
 
+## Releasing
+
+`main` is protected: merges go through a pull request and the `Lint and formatting` check has to
+pass. Reviews are not required - GitHub will not let you approve your own pull request, and this
+is a single-maintainer repository. Administrators can still bypass, deliberately, so a broken
+`main` can be repaired without fighting the settings.
+
+Direct `git push` to `main` no longer works. The release commit belongs on `develop` anyway, and
+tags are not covered by branch protection.
+
+```bash
+# on develop, after the work is merged and validated on preview
+npm version --no-git-tag-version <version>   # then restore the CalVer leading zero by hand
+#   npm normalises 26.07.5 to 26.7.5; fix package.json, package-lock.json and the docs headers
+git commit -am "chore(release): <version>" && git push origin develop
+
+gh pr create --base main --head develop --title "Release <version>" --body "<summary>"
+gh pr checks --watch
+gh pr merge --merge --subject "<subject>" --body "<body>"
+
+git fetch origin main && git tag -a <version> -m "<notes>" origin/main
+git push origin <version>
+```
+
+`--merge` keeps a merge commit, so the history still shows which branch went where; squashing
+would flatten that. `--subject` and `--body` override GitHub's default "Merge pull request #N".
+
 ## Environment variables
 
 | Variable | Required for | Notes |
