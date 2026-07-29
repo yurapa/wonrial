@@ -22,6 +22,22 @@
 - Avoid over-engineering for hypothetical requirements
 - Start simple, refactor when necessary
 
+## Continuous Integration
+
+`.github/workflows/ci.yml` runs `npm run lint` and `npm run format:check` on pull requests and
+on pushes to `develop` and `main`. Nothing else.
+
+It deliberately omits `build` and `typecheck`: Vercel builds every push including pull-request
+previews, and `next build` runs TypeScript, so repeating them buys a slower duplicate of a
+signal a failed deployment already gives.
+
+It also omits `npm audit`. Advisories arrive on dependencies we do not control, and a blocking
+audit would stop unrelated merges - in July 2026 `sharp` and `postcss` had no fix available for
+weeks because Next still pinned the affected versions.
+
+The two checks that are there exist because nothing else performed them, and it showed: the
+Next.js lint rules sat registered but disabled, and nine files drifted from Prettier.
+
 ## Dependency Security
 
 `npm audit` is expected to report nothing. Anything it does report is either new or a

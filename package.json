@@ -11,6 +11,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format": "prettier './**/*.{ts,tsx,css,scss,js,json}' --write",
+    "format:check": "prettier './**/*.{ts,tsx,css,scss,js,json}' --check",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
