@@ -139,6 +139,11 @@ wonrial/
   the subject prefix and the Resend `env` tag
 - Builds the HTML and plain-text bodies, escaping every interpolated value
 
+**`src/components/turnstile/turnstile-field.tsx`**
+- Wraps `@marsidev/react-turnstile`, holding the site key in one place
+- Reports the token through `onToken`, and null when the challenge errors or expires
+- Exposes the library ref so forms can reset the single-use token after a submit
+
 **`src/utils/turnstile.ts`**
 - Verifies a Turnstile token against Cloudflare's siteverify endpoint
 - Fails closed: anything other than an explicit success counts as unverified
@@ -575,7 +580,7 @@ NODE_ENV                  # development/production
 
 ## File Statistics
 
-- **Total Components**: 31
+- **Total Components**: 33
 - **Total Pages**: 5 (home, ai, contact, services, 404)
 - **API Routes**: 2 (/api/chat, /api/contact)
 - **Supported Locales**: 3 (en, ru, uk)
