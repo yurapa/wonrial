@@ -22,6 +22,47 @@
 - Avoid over-engineering for hypothetical requirements
 - Start simple, refactor when necessary
 
+## Dependency Security
+
+`npm audit` is expected to report findings in the ESLint chain. They are known, assessed and
+deliberately left; everything reaching production is patched through `overrides` in
+`package.json`.
+
+### Why `overrides` rather than upgrades
+
+`next` pins `postcss` exactly and `sharp` by caret, and the latest stable Next still points at
+versions that received advisories in July 2026. The overrides pull both forward without
+touching direct dependencies:
+
+| Package | Was | Now | Advisory |
+|---|---|---|---|
+| `sharp` | 0.34.5 (via `next`) | ^0.35.3 | GHSA-f88m-g3jw-g9cj — libvips CVEs, published 2026-07-17 |
+| `postcss` | 8.4.31 (via `next`) | ^8.5.24 | GHSA-r28c-9q8g-f849 and two others, published 2026-07-20 |
+
+Re-check `npm view next dependencies` after each Next release; once Next ships its own bump the
+overrides become redundant and should be dropped rather than left to drift.
+
+### The remaining ESLint findings
+
+Nine findings all trace to one advisory — GHSA-mh99-v99m-4gvg, a memory-exhaustion DoS in
+`brace-expansion` ≤5.0.7, published 2026-07-23 — reached through `minimatch@3` inside ESLint and
+its plugins.
+
+There is no clean fix today, and both obvious ones were tried and rejected:
+
+- Overriding `brace-expansion` to ^5.0.8 **breaks ESLint**: `minimatch@3` does
+  `require('brace-expansion')` expecting a function, while 5.x exports an object, so linting dies
+  with `TypeError: expand is not a function`.
+- Upgrading to ESLint 10 is blocked upstream: `eslint-plugin-react@7.37.5`, the latest release and
+  a dependency of `eslint-config-next`, caps its peer range at `eslint ^9.7`.
+
+`npm audit fix --force` "resolves" this by downgrading `eslint-config-next` to 12.0.4 and
+`eslint-plugin-react` to 7.22.0. Never run it here.
+
+The exposure is nil: these are devDependencies, the linter runs over our own source, and the
+advisory needs attacker-controlled glob input. Revisit when `eslint-plugin-react` supports
+ESLint 10.
+
 ## File Organization
 
 ### Directory Structure

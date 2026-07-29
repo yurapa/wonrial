@@ -54,6 +54,10 @@
     "tailwindcss": "^4.1.18",
     "typescript": "^6.0.3"
   },
+  "overrides": {
+    "sharp": "^0.35.3",
+    "postcss": "^8.5.24"
+  },
   "files": [
     ".browserslistrc",
     "prettier.config.json"
