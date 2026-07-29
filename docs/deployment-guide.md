@@ -1,7 +1,7 @@
 # WONRIAL Deployment & DNS Guide
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.3
+**Version**: 26.07.4
 **Applies To**: hosting, DNS zone, and email delivery for `wonrial.com`
 
 ## Hosting
@@ -48,8 +48,17 @@ The environment split is done entirely by the environment variables — Vercel s
 environment, so the code never branches on which widget to use. Set the PROD pair in Vercel
 Production and the DEV pair in Vercel Preview and in local `.env`.
 
-Turnstile tokens are single-use: the form resets the widget after every submit, otherwise a
-retry fails with a token Cloudflare has already redeemed.
+Turnstile tokens are single-use: every form resets the widget after a submit, otherwise a retry
+fails with a token Cloudflare has already redeemed.
+
+The widget is rendered by `@marsidev/react-turnstile` through
+`src/components/turnstile/turnstile-field.tsx`, which is the only place the site key appears.
+Forms hold the token in state and keep submit disabled until it arrives, so a visitor who
+submits before the challenge resolves no longer gets the 403 meant for bots.
+
+The library renders explicitly rather than letting Cloudflare's script scan the DOM once on
+load. That is what allows the widget to work inside the login modal, whose content mounts only
+when the modal opens.
 
 ## DNS zone
 

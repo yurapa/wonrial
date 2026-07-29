@@ -1,7 +1,7 @@
 # WONRIAL Codebase Summary
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.3
+**Version**: 26.07.4
 **Language**: TypeScript 6.0.3
 **Framework**: Next.js 16.2.12 + React 19.2.8
 **Status**: Recently updated (AI SDK v7 migration, dependency updates)
@@ -138,6 +138,11 @@ wonrial/
 - Resolves `VERCEL_ENV` to pick the sender (`info@` in production, `info-dev@` elsewhere),
   the subject prefix and the Resend `env` tag
 - Builds the HTML and plain-text bodies, escaping every interpolated value
+
+**`src/components/turnstile/turnstile-field.tsx`**
+- Wraps `@marsidev/react-turnstile`, holding the site key in one place
+- Reports the token through `onToken`, and null when the challenge errors or expires
+- Exposes the library ref so forms can reset the single-use token after a submit
 
 **`src/utils/turnstile.ts`**
 - Verifies a Turnstile token against Cloudflare's siteverify endpoint
@@ -575,7 +580,7 @@ NODE_ENV                  # development/production
 
 ## File Statistics
 
-- **Total Components**: 31
+- **Total Components**: 33
 - **Total Pages**: 5 (home, ai, contact, services, 404)
 - **API Routes**: 2 (/api/chat, /api/contact)
 - **Supported Locales**: 3 (en, ru, uk)

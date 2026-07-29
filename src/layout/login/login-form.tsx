@@ -1,8 +1,16 @@
-import { useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
+import type { TurnstileInstance } from '@marsidev/react-turnstile';
+
+import TurnstileField from '@/components/turnstile/turnstile-field';
 
 // There is no auth backend yet. Both forms behave like real ones - they validate,
 // show a short pending state and then report an outcome - but nothing leaves the
 // browser and nothing is stored.
+//
+// The Turnstile widget below is therefore inert: it produces a token, but nothing sends it
+// and no server verifies it, so it protects nothing yet. It is wired up now so that adding
+// the backend is a server-side change only. Do not read its presence as the form being
+// protected.
 const FAKE_REQUEST_MS = 600;
 
 // Half of the fade, so the content swaps while the panel is invisible.
@@ -29,6 +37,8 @@ export default function LoginForm({ mode, onModeChange }: LoginFormProps) {
   const [status, setStatus] = useState<Status>('idle');
   const [keepSignedIn, setKeepSignedIn] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const switchMode = (next: AuthMode) => {
     if (next === mode) return;
@@ -48,7 +58,14 @@ export default function LoginForm({ mode, onModeChange }: LoginFormProps) {
     if (status === 'pending') return;
 
     setStatus('pending');
-    setTimeout(() => setStatus('done'), FAKE_REQUEST_MS);
+    setTimeout(() => {
+      setStatus('done');
+
+      // Signing in and requesting a reset are separate actions, and a token may only be
+      // redeemed once, so each attempt has to start from a fresh challenge.
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
+    }, FAKE_REQUEST_MS);
   };
 
   return (
@@ -149,8 +166,10 @@ export default function LoginForm({ mode, onModeChange }: LoginFormProps) {
           </div>
         )}
 
+        <TurnstileField ref={turnstileRef} onToken={setTurnstileToken} className="mb-8" />
+
         <div className="mb-6">
-          <button type="submit" disabled={status === 'pending'} className={submitClassName}>
+          <button type="submit" disabled={status === 'pending' || !turnstileToken} className={submitClassName}>
             {mode === 'signin'
               ? status === 'pending'
                 ? 'Signing in...'
