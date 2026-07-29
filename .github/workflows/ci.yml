@@ -31,8 +31,8 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          # Matches local development; Next 16 needs >= 20.9.
-          node-version: 22
+          # Single source of truth for the Node version; keep .nvmrc and Vercel in step.
+          node-version-file: .nvmrc
           cache: npm
 
       - run: npm ci

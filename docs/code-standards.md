@@ -27,6 +27,10 @@
 `.github/workflows/ci.yml` runs `npm run lint` and `npm run format:check` on pull requests and
 on pushes to `develop` and `main`. Nothing else.
 
+The Node version comes from `.nvmrc`, which is the single source of truth. Vercel is set to the
+same major under Settings -> Build and Deployment; if `.nvmrc` moves, move Vercel with it, or
+CI will pass on a runtime production never uses.
+
 It deliberately omits `build` and `typecheck`: Vercel builds every push including pull-request
 previews, and `next build` runs TypeScript, so repeating them buys a slower duplicate of a
 signal a failed deployment already gives.
