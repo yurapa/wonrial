@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import typescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import next from '@next/eslint-plugin-next';
 
@@ -44,7 +43,6 @@ export default [
     },
     plugins: {
       '@typescript-eslint': typescript,
-      'react': reactPlugin,
       'react-hooks': reactHooks,
       '@next/next': next,
     },
@@ -63,8 +61,6 @@ export default [
       '@typescript-eslint/no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
       
       // React rules
-      'react/react-in-jsx-scope': 'off', // Not needed in React 17+
-      'react/prop-types': 'off', // We use TypeScript
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       
@@ -73,11 +69,6 @@ export default [
       
       // Disable problematic rules
       'no-undef': 'off', // TypeScript handles this better
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
     },
   },
   {
