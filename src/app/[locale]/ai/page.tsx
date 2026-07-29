@@ -8,13 +8,12 @@ import utilStyles from '@/styles/utils.module.css';
 
 export const metadata: Metadata = {
   title: 'AI ChatBot for Business Support | Wonrial',
-  description:
-    'Wonrial AI ChatBot – Ask Questions & Get Answers',
+  description: 'Wonrial AI ChatBot – Ask Questions & Get Answers',
   alternates: {
     canonical: '/ai',
     languages: {
-      'ru': '/ru/ai',
-      'uk': '/uk/ai',
+      ru: '/ru/ai',
+      uk: '/uk/ai',
     },
   },
 };

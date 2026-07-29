@@ -1,7 +1,7 @@
 # WONRIAL Code Standards & Guidelines
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.2
+**Version**: 26.07.3
 **Applies To**: All TypeScript/TSX code in WONRIAL project
 **Recent Changes**: AI SDK v7 client/server patterns, TypeScript 6, whole codebase is now `.ts`/`.tsx`
 
@@ -21,6 +21,67 @@
 - Implement features only when needed
 - Avoid over-engineering for hypothetical requirements
 - Start simple, refactor when necessary
+
+## Dependency Security
+
+`npm audit` is expected to report nothing. Anything it does report is either new or a
+regression — treat it as such.
+
+### `overrides` for the Next.js dependency pins
+
+`next` pins `postcss` exactly and `sharp` by caret, and the latest stable Next still points at
+versions that received advisories in July 2026. The overrides in `package.json` pull both
+forward without touching direct dependencies:
+
+| Package | Was | Now | Advisory |
+|---|---|---|---|
+| `sharp` | 0.34.5 (via `next`) | ^0.35.3 | GHSA-f88m-g3jw-g9cj — libvips CVEs, 2026-07-17 |
+| `postcss` | 8.4.31 (via `next`) | ^8.5.24 | GHSA-r28c-9q8g-f849 and two others, 2026-07-20 |
+
+Re-check `npm view next dependencies` after each Next release; once Next ships its own bump the
+overrides become redundant and should be dropped rather than left to drift.
+
+### Why the ESLint dependencies are so few
+
+An advisory in `brace-expansion` (GHSA-mh99-v99m-4gvg, 2026-07-23) reached the project through
+`minimatch@3` inside ESLint 9. ESLint 10 uses a patched chain, and the only thing blocking the
+upgrade was `eslint-plugin-react`, whose peer range stops at `eslint ^9.7`.
+
+That plugin turned out to be contributing nothing. `eslint --print-config` showed 66 active
+rules: 62 core, 2 `@typescript-eslint`, 2 `react-hooks`, and **zero** from `react`. It was
+registered as a plugin with its only two mentioned rules explicitly switched off.
+
+Removed with it:
+
+- `eslint-config-next` — never imported; `eslint.config.js` registers `@next/eslint-plugin-next`
+  directly.
+- `eslint-config-prettier` — never imported.
+
+After the upgrade the same 66 rules are still active, plus three that ESLint 10 added to its
+recommended set. Nothing was lost to gain the security fix.
+
+**Never run `npm audit fix --force` in this repo.** Its idea of a fix was downgrading
+`eslint-config-next` to 12.0.4 and `eslint-plugin-react` to 7.22.0.
+
+### Prettier and ESLint
+
+`eslint-config-prettier/flat` is the **last** entry in `eslint.config.js`. Flat config applies
+later entries over earlier ones, so anywhere else it would be overridden by the rules above it
+and the conflict it exists to remove would come back.
+
+Use the `/flat` export rather than the default one: it carries a `name`, which shows up in
+`eslint --inspect-config` and in diagnostics. The default export is a bare `{ rules }` object.
+
+It switches off 358 rules, four of which were live here: `semi`, `quotes`,
+`object-curly-spacing` and `no-unexpected-multiline`. The first three were removed from the
+config rather than left as dead entries — Prettier already enforces exactly the same style
+(`semi: true`, `singleQuote: true`, default `bracketSpacing`), so nothing about the formatting
+changed. Do not add formatting rules to ESLint; they will be switched off again.
+
+### Next.js rules
+
+`eslint.config.js` spreads `@next/eslint-plugin-next`'s `recommended` set, so 20 of its 21 rules
+are active. The exception is `@next/next/no-img-element`, switched off deliberately.
 
 ## File Organization
 

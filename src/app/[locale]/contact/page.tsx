@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/contact',
     languages: {
-      'ru': '/ru/contact',
-      'uk': '/uk/contact',
+      ru: '/ru/contact',
+      uk: '/uk/contact',
     },
   },
 };

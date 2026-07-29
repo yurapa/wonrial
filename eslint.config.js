@@ -1,9 +1,9 @@
 import js from '@eslint/js';
 import typescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import next from '@next/eslint-plugin-next';
+import prettierConfig from 'eslint-config-prettier/flat';
 
 export default [
   js.configs.recommended,
@@ -27,57 +27,49 @@ export default [
         URL: 'readonly',
         Request: 'readonly',
         Response: 'readonly',
-        
+
         // Node.js globals
         process: 'readonly',
         Buffer: 'readonly',
         __dirname: 'readonly',
         __filename: 'readonly',
-        
+
         // TypeScript/React globals
         React: 'readonly',
         JSX: 'readonly',
-        
+
         // Next.js globals
         NodeJS: 'readonly',
       },
     },
     plugins: {
       '@typescript-eslint': typescript,
-      'react': reactPlugin,
       'react-hooks': reactHooks,
       '@next/next': next,
     },
     rules: {
-      // Basic rules
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single'],
-      'object-curly-spacing': ['warn', 'always'],
-      
+      // Next.js recommended set - App Router correctness, script and font pitfalls.
+      ...next.configs.recommended.rules,
+
+      // Formatting is Prettier's job - see the config-prettier entry at the end.
+
       // TypeScript rules
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/strict-boolean-expressions': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
       '@typescript-eslint/restrict-template-expressions': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
-      
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+
       // React rules
-      'react/react-in-jsx-scope': 'off', // Not needed in React 17+
-      'react/prop-types': 'off', // We use TypeScript
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      
-      // Next.js rules
+
+      // Next.js rules - keep the recommended set above, minus this one.
       '@next/next/no-img-element': 'off',
-      
+
       // Disable problematic rules
       'no-undef': 'off', // TypeScript handles this better
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
     },
   },
   {
@@ -104,4 +96,8 @@ export default [
       '.claude/**',
     ],
   },
+
+  // Must stay last: it switches off every core rule that would fight Prettier, and in flat
+  // config later entries win. Placed earlier, the rules above would override it again.
+  prettierConfig,
 ];
