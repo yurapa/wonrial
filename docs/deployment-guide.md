@@ -1,7 +1,7 @@
 # WONRIAL Deployment & DNS Guide
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.3
+**Version**: 26.07.4
 **Applies To**: hosting, DNS zone, and email delivery for `wonrial.com`
 
 ## Hosting
