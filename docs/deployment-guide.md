@@ -89,41 +89,45 @@ when the modal opens.
 
 ## DNS zone
 
-Registrar **and** DNS: Namecheap (BasicDNS). Migrated from GoDaddy on 2026-07-28; before that
-the domain was registered at Namecheap while `ns51/ns52.domaincontrol.com` still served the
-zone, which meant Namecheap's Advanced DNS panel had no effect on the live domain.
+Registrar **and** DNS live with the same provider, on its basic DNS tier. The zone was migrated
+in July 2026; before that the domain was registered with one provider while another still
+served the zone, so the registrar's DNS panel had no effect on the live domain.
 
-A stale GoDaddy zone still answers for `wonrial.com` on those nameservers (March snapshot,
-SOA serial `2026032600`), left over from when the domain was registered there. It sits outside
-any accessible GoDaddy account and cannot be removed, but it is inert: the registry delegates
-to Namecheap, so nothing queries it. Ignore it — do not treat a lookup against
-`@ns51.domaincontrol.com` as evidence of the live configuration.
+A stale zone from the previous provider may still answer for the domain. It is outside any
+account we control and cannot be removed, but it is inert: the registry delegates elsewhere, so
+nothing queries it. The practical rule - **never read a lookup aimed at a specific nameserver as
+evidence of the live configuration**; query the domain, not a server.
 
-Current records:
+The zone holds, by purpose rather than by value:
 
-| Type | Host | Value | Purpose |
-|---|---|---|---|
-| A | `@` | `216.198.79.1` | Vercel — **the site goes down without it** |
-| CNAME | `www` | `wonrial.com.` | www alias |
-| TXT | `@` | `v=spf1 include:zohomail.eu ~all` | SPF for Zoho |
-| TXT | `@` | `google-site-verification=s85oM5hn-…` | Search Console |
-| MX | `@` | `mx.zoho.eu` (10), `mx2` (20), `mx3` (50) | Zoho inbound |
-| TXT | `zmail._domainkey` | Zoho DKIM key | Zoho signing |
-| TXT | `resend._domainkey` | Resend DKIM key | Resend signing |
-| TXT | `send` | `v=spf1 include:amazonses.com ~all` | Resend SPF |
-| MX | `send` | `feedback-smtp.eu-west-1.amazonses.com` (10) | Resend bounce handling |
-| TXT | `_dmarc` | `v=DMARC1; p=none;` | DMARC monitoring |
+| Host | Purpose | Losing it means |
+|---|---|---|
+| `@` (A) | points the apex at the hosting provider | **the site goes down** |
+| `www` (CNAME) | apex alias | www stops resolving |
+| `@` (TXT) | SPF for the mailbox provider, plus a search-console token | mail starts failing SPF |
+| `@` (MX) | inbound mail, three hosts by priority | the domain stops receiving mail |
+| `<selector>._domainkey` (TXT) | one DKIM key per sending provider | that provider's mail goes unsigned |
+| `send` (TXT + MX) | the transactional provider's SPF and bounce handling | transactional sending degrades |
+| `_dmarc` (TXT) | DMARC, currently monitor-only | no DMARC signal |
+
+Read the live values straight from the zone rather than from here - a copy in a document goes
+stale silently, and the authoritative answer is one query away:
+
+```bash
+dig +short ANY wonrial.com
+dig +short TXT <selector>._domainkey.wonrial.com
+```
 
 DNSSEC is off.
 
-### Zoho mailboxes
+### Mailboxes
 
-Zoho Mail (Mail Free plan) serves inbound mail for the domain. There is one mailbox with two
-addresses — `admin@wonrial.com` (the mailbox address) and `info@wonrial.com` (an alias) — so
-`CONTACT_TO_EMAIL` may be either; both land in the same place. `info@wonrial.com` is also the
-production sender, which means replies to the contact-form confirmation reach a real inbox.
+Inbound mail is served by the provider behind the MX records. `info@wonrial.com` is a real
+deliverable address and the production sender, so replies to the contact-form confirmation reach
+a person. The non-production sender has no mailbox behind it.
 
-`info-dev@wonrial.com`, the non-production sender, has no Zoho mailbox.
+Which address `CONTACT_TO_EMAIL` points at is an environment variable, not a code decision - see
+the table above.
 
 ### Why Resend does not disturb Zoho
 
