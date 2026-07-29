@@ -63,10 +63,10 @@ recommended set. Nothing was lost to gain the security fix.
 **Never run `npm audit fix --force` in this repo.** Its idea of a fix was downgrading
 `eslint-config-next` to 12.0.4 and `eslint-plugin-react` to 7.22.0.
 
-### Known gap
+### Next.js rules
 
-`@next/eslint-plugin-next` is registered but no `@next/next` rule is enabled, so the Next.js
-lint rules do not currently run. Enabling them is a deliberate decision that has not been taken.
+`eslint.config.js` spreads `@next/eslint-plugin-next`'s `recommended` set, so 20 of its 21 rules
+are active. The exception is `@next/next/no-img-element`, switched off deliberately.
 
 ## File Organization
 

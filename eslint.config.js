@@ -47,6 +47,9 @@ export default [
       '@next/next': next,
     },
     rules: {
+      // Next.js recommended set - App Router correctness, script and font pitfalls.
+      ...next.configs.recommended.rules,
+
       // Basic rules
       'semi': ['error', 'always'],
       'quotes': ['error', 'single'],
@@ -64,7 +67,7 @@ export default [
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       
-      // Next.js rules
+      // Next.js rules - keep the recommended set above, minus this one.
       '@next/next/no-img-element': 'off',
       
       // Disable problematic rules
