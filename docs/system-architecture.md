@@ -1,7 +1,7 @@
 # WONRIAL System Architecture
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.1
+**Version**: 26.07.2
 **Status**: Production (wonrial.com)
 **Recent**: AI SDK v7 migration, TypeScript 6, dependency refresh, Speed Insights removed
 
@@ -261,8 +261,14 @@ UI message stream; text chunks arrive progressively and are reassembled by useCh
 }
 ```
 
-`company` is a honeypot: it is hidden from people, so a non-empty value means a bot. The
-endpoint then returns 200 without sending anything, which denies the bot a usable signal.
+`messageRef` is a honeypot: it is hidden from people, so a non-empty value means a bot. The
+endpoint then returns 200 without sending anything, which denies the bot a usable signal. The
+field name is deliberately meaningless - an autofill token such as `company` gets filled from
+the browser's address profile and would discard a genuine submission.
+
+`turnstileToken` carries the Cloudflare Turnstile response. It is verified against Cloudflare
+before anything is sent, and verification fails closed: a missing token, a network error or a
+malformed reply all count as unverified. This is what stops the endpoint being an open mailer.
 
 **Response**: `{ "ok": true }`, or `{ "ok": false, "error": "invalid_input" | "email_not_configured" | "send_failed" }`
 
@@ -776,6 +782,7 @@ Core Web Vitals Targets:
 
 /api/contact errors:
 ├── 400: invalid_input - validation failed, Resend not called
+├── 403: verification_failed - Turnstile rejected or was unreachable
 ├── 500: email_not_configured - RESEND_API_KEY or CONTACT_TO_EMAIL missing
 ├── 502: send_failed - Resend rejected the notification
 └── 200: returned even when only the confirmation mail fails

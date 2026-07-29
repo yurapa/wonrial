@@ -1,7 +1,7 @@
 # WONRIAL Deployment & DNS Guide
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.1
+**Version**: 26.07.2
 **Applies To**: hosting, DNS zone, and email delivery for `wonrial.com`
 
 ## Hosting
@@ -25,9 +25,31 @@ relies on this to label outbound mail.
 | `GROQ_API_KEY` | `/api/chat` | |
 | `RESEND_API_KEY` | `/api/contact` | A **sending-only** key cannot read the Domains API; create a full-access key if you need that |
 | `CONTACT_TO_EMAIL` | `/api/contact` | Inbox receiving contact tickets |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | `/contact` form | Public; picks which Turnstile widget renders |
+| `TURNSTILE_SECRET_KEY` | `/api/contact` | Secret; verifies the token server-side |
 | `NEXT_PUBLIC_GTM_ID` | analytics | Optional; analytics is skipped when unset |
 
 Set them in Vercel per environment, and in local `.env` (git-ignored).
+
+## Cloudflare Turnstile
+
+Two widgets, so production and non-production have separate keys and separate analytics. A dev
+secret leaks more easily — it lives in local `.env` files and in preview settings — and with one
+shared widget that leak would also defeat verification in production.
+
+| Widget | Hostnames | Used by |
+|---|---|---|
+| `WONRIAL PROD` | `wonrial.com`, `www.wonrial.com` | Vercel Production |
+| `WONRIAL DEV` | `wonrial.vercel.app`, `localhost` | Vercel Preview and local |
+
+Both use the Managed widget mode with pre-clearance off.
+
+The environment split is done entirely by the environment variables — Vercel scopes them per
+environment, so the code never branches on which widget to use. Set the PROD pair in Vercel
+Production and the DEV pair in Vercel Preview and in local `.env`.
+
+Turnstile tokens are single-use: the form resets the widget after every submit, otherwise a
+retry fails with a token Cloudflare has already redeemed.
 
 ## DNS zone
 

@@ -4,6 +4,7 @@ import { createTranslation } from '@/i18n/server';
 import { defaultLocale, locales } from '@/i18n/settings';
 import type { ContactError, ContactRequest, ContactSubmission } from '@/types/contact';
 import { buildConfirmationEmail, buildNotificationEmail, getSender, resolveEnvironment } from '@/utils/contact-email';
+import { verifyTurnstileToken } from '@/utils/turnstile';
 
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
@@ -84,6 +85,15 @@ export async function POST(req: Request) {
   const submission = readSubmission(body);
 
   if (!submission) return fail('invalid_input', 400);
+
+  // Turnstile is what makes this endpoint more than an open mailer, so it is checked before
+  // anything is sent - and only after the free checks above, to avoid a network round trip on
+  // input that was never going to be accepted.
+  const remoteIp = req.headers.get('cf-connecting-ip') ?? req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? null;
+
+  if (!(await verifyTurnstileToken(body.turnstileToken, remoteIp))) {
+    return fail('verification_failed', 403);
+  }
 
   const environment = resolveEnvironment();
   const sender = getSender(environment);

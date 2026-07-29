@@ -1,7 +1,7 @@
 # WONRIAL Codebase Summary
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.1
+**Version**: 26.07.2
 **Language**: TypeScript 6.0.3
 **Framework**: Next.js 16.2.12 + React 19.2.8
 **Status**: Recently updated (AI SDK v7 migration, dependency updates)
@@ -138,6 +138,11 @@ wonrial/
 - Resolves `VERCEL_ENV` to pick the sender (`info@` in production, `info-dev@` elsewhere),
   the subject prefix and the Resend `env` tag
 - Builds the HTML and plain-text bodies, escaping every interpolated value
+
+**`src/utils/turnstile.ts`**
+- Verifies a Turnstile token against Cloudflare's siteverify endpoint
+- Fails closed: anything other than an explicit success counts as unverified
+- Requires `TURNSTILE_SECRET_KEY`
 
 **`src/types/contact.ts`**
 - Submission, request and response types shared by the route and the form
@@ -609,7 +614,7 @@ return <h1>{t('section.title')}</h1>
 ## Unresolved Questions
 
 1. **Database Backend**: contact submissions are emailed, not persisted - is storage wanted?
-2. **Bot protection**: only a honeypot today; Cloudflare Turnstile is the planned follow-up
+2. **Rate limiting**: none; Turnstile and the honeypot carry bot protection today
 3. **Authentication**: Plan for user login/registration?
 4. **Testing**: Any test framework (Jest, Vitest) planned?
 5. **CI/CD**: GitHub Actions workflow configured?
