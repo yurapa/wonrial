@@ -3,6 +3,7 @@ import typescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import reactHooks from 'eslint-plugin-react-hooks';
 import next from '@next/eslint-plugin-next';
+import prettierConfig from 'eslint-config-prettier/flat';
 
 export default [
   js.configs.recommended,
@@ -50,11 +51,8 @@ export default [
       // Next.js recommended set - App Router correctness, script and font pitfalls.
       ...next.configs.recommended.rules,
 
-      // Basic rules
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single'],
-      'object-curly-spacing': ['warn', 'always'],
-      
+      // Formatting is Prettier's job - see the config-prettier entry at the end.
+
       // TypeScript rules
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/strict-boolean-expressions': 'off',
@@ -98,4 +96,8 @@ export default [
       '.claude/**',
     ],
   },
+
+  // Must stay last: it switches off every core rule that would fight Prettier, and in flat
+  // config later entries win. Placed earlier, the rules above would override it again.
+  prettierConfig,
 ];

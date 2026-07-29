@@ -63,6 +63,21 @@ recommended set. Nothing was lost to gain the security fix.
 **Never run `npm audit fix --force` in this repo.** Its idea of a fix was downgrading
 `eslint-config-next` to 12.0.4 and `eslint-plugin-react` to 7.22.0.
 
+### Prettier and ESLint
+
+`eslint-config-prettier/flat` is the **last** entry in `eslint.config.js`. Flat config applies
+later entries over earlier ones, so anywhere else it would be overridden by the rules above it
+and the conflict it exists to remove would come back.
+
+Use the `/flat` export rather than the default one: it carries a `name`, which shows up in
+`eslint --inspect-config` and in diagnostics. The default export is a bare `{ rules }` object.
+
+It switches off 358 rules, four of which were live here: `semi`, `quotes`,
+`object-curly-spacing` and `no-unexpected-multiline`. The first three were removed from the
+config rather than left as dead entries — Prettier already enforces exactly the same style
+(`semi: true`, `singleQuote: true`, default `bracketSpacing`), so nothing about the formatting
+changed. Do not add formatting rules to ESLint; they will be switched off again.
+
 ### Next.js rules
 
 `eslint.config.js` spreads `@next/eslint-plugin-next`'s `recommended` set, so 20 of its 21 rules
