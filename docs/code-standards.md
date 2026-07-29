@@ -1,7 +1,7 @@
 # WONRIAL Code Standards & Guidelines
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.4
+**Version**: 26.07.5
 **Applies To**: All TypeScript/TSX code in WONRIAL project
 **Recent Changes**: AI SDK v7 client/server patterns, TypeScript 6, whole codebase is now `.ts`/`.tsx`
 
@@ -21,6 +21,30 @@
 - Implement features only when needed
 - Avoid over-engineering for hypothetical requirements
 - Start simple, refactor when necessary
+
+## Continuous Integration
+
+`.github/workflows/ci.yml` runs `npm run lint` and `npm run format:check` on pull requests and
+on pushes to `develop` and `main`. Nothing else.
+
+The Node version comes from `.nvmrc`, which is the single source of truth for CI. `engines` in
+`package.json` pins the same major (`>=24 <25`) so npm refuses to pretend another one will do,
+and `@types/node` is held on `24.x` to match - types from a newer major would describe APIs the
+runtime does not have.
+
+Vercel is the third place, set under Settings -> Build and Deployment. It has to be moved by
+hand; if it drifts, CI passes on a runtime production never uses.
+
+It deliberately omits `build` and `typecheck`: Vercel builds every push including pull-request
+previews, and `next build` runs TypeScript, so repeating them buys a slower duplicate of a
+signal a failed deployment already gives.
+
+It also omits `npm audit`. Advisories arrive on dependencies we do not control, and a blocking
+audit would stop unrelated merges - in July 2026 `sharp` and `postcss` had no fix available for
+weeks because Next still pinned the affected versions.
+
+The two checks that are there exist because nothing else performed them, and it showed: the
+Next.js lint rules sat registered but disabled, and nine files drifted from Prettier.
 
 ## Dependency Security
 

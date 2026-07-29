@@ -1,7 +1,7 @@
 # WONRIAL System Architecture
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.4
+**Version**: 26.07.5
 **Status**: Production (wonrial.com)
 **Recent**: AI SDK v7 migration, TypeScript 6, dependency refresh, Speed Insights removed
 

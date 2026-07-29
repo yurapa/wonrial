@@ -1,0 +1,42 @@
+name: CI
+
+# Only the two checks nothing else performs.
+#
+# `build` and `typecheck` are deliberately absent: Vercel builds every push, including preview
+# deployments for pull requests, and `next build` runs TypeScript. Repeating them here would
+# spend a couple of minutes to learn what a failed deployment already tells us.
+#
+# `npm audit` is absent on purpose too. Advisories land on dependencies we do not control - in
+# July 2026 `sharp` and `postcss` were unfixable for weeks because Next still pinned the
+# affected versions - and a blocking audit would have frozen every merge over something no pull
+# request could fix.
+
+on:
+  pull_request:
+  push:
+    branches: [develop, main]
+
+# A newer push makes the previous run pointless.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Lint and formatting
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          # Single source of truth for the Node version; keep .nvmrc and Vercel in step.
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npm run format:check
