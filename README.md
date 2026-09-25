@@ -31,13 +31,13 @@ npm run typecheck # Validate TypeScript
 
 | Category | Tech |
 |----------|------|
-| **Framework** | Next.js 16.2.12, React 19.2.8, TypeScript 6.0.3 |
+| **Framework** | Next.js 16.3.6, React 19.3.0, TypeScript 6.0.3 |
 | **Styling** | Tailwind CSS 4.3.3, SASS 1.102.0 |
-| **i18n** | i18next 26.3.6, react-i18next 17.0.11 (3 locales) |
-| **AI** | Vercel AI SDK 7.0.40 + @ai-sdk/groq 4.0.15 + @ai-sdk/react 4.0.43 |
+| **i18n** | i18next 26.4.2, react-i18next 17.0.15 (3 locales) |
+| **AI** | Vercel AI SDK 7.0.114 + @ai-sdk/groq 4.0.48 + @ai-sdk/react 4.0.117 |
 | **Theme** | next-themes 0.4.6 (dark/light mode) |
 | **Hosting** | Vercel (auto-deploy) |
-| **Dev Tools** | ESLint 9.39.5, Prettier 3.9.6 |
+| **Dev Tools** | ESLint 10.11.0, Prettier 3.9.9 |
 
 ## Environment Variables
 

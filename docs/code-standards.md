@@ -1,7 +1,7 @@
 # WONRIAL Code Standards & Guidelines
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.6
+**Version**: 26.09.0
 **Applies To**: All TypeScript/TSX code in WONRIAL project
 **Recent Changes**: AI SDK v7 client/server patterns, TypeScript 6, whole codebase is now `.ts`/`.tsx`
 
@@ -51,19 +51,16 @@ Next.js lint rules sat registered but disabled, and nine files drifted from Pret
 `npm audit` is expected to report nothing. Anything it does report is either new or a
 regression — treat it as such.
 
-### `overrides` for the Next.js dependency pins
+### No `overrides` for the Next.js dependency pins
 
-`next` pins `postcss` exactly and `sharp` by caret, and the latest stable Next still points at
-versions that received advisories in July 2026. The overrides in `package.json` pull both
-forward without touching direct dependencies:
+`next` pins `postcss` exactly and `sharp` by caret. In July 2026 both pins pointed at versions
+with advisories (GHSA-f88m-g3jw-g9cj for `sharp` <0.35.0, GHSA-r28c-9q8g-f849 and two others for
+`postcss` <=8.5.17), so `package.json` carried `overrides` to pull them forward.
 
-| Package | Was | Now | Advisory |
-|---|---|---|---|
-| `sharp` | 0.34.5 (via `next`) | ^0.35.3 | GHSA-f88m-g3jw-g9cj — libvips CVEs, 2026-07-17 |
-| `postcss` | 8.4.31 (via `next`) | ^8.5.24 | GHSA-r28c-9q8g-f849 and two others, 2026-07-20 |
-
-Re-check `npm view next dependencies` after each Next release; once Next ships its own bump the
-overrides become redundant and should be dropped rather than left to drift.
+Next 16.3.6 ships `postcss` 8.5.23 and `sharp` ^0.35.4, both past the affected ranges, and the
+overrides were dropped. If a future advisory lands on a Next pin again, add an override back,
+note it here, and remove it once `npm view next dependencies` shows Next's own bump. An
+override on `postcss` must match the direct `postcss` range, or npm fails with `EOVERRIDE`.
 
 ### Why the ESLint dependencies are so few
 

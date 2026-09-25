@@ -1,4 +1,22 @@
 {
+  "meta": {
+    "home": {
+      "title": "WONRIAL – Professional Technology Assistance",
+      "description": "WONRIAL ENTERPRISES LTD builds custom software, interactive web applications and AI chatbots for businesses. We make technology accessible."
+    },
+    "services": {
+      "title": "Our Services – Software Development and Web Design | WONRIAL",
+      "description": "Custom web, mobile and desktop software, architecture of complex systems and interactive web application design from WONRIAL ENTERPRISES LTD."
+    },
+    "ai": {
+      "title": "AI Chatbot for Business Support | WONRIAL",
+      "description": "Ask the WONRIAL AI chatbot about our services and get instant answers - a conversational assistant for customer support and business tasks."
+    },
+    "contact": {
+      "title": "Contact Us | WONRIAL",
+      "description": "Contact WONRIAL ENTERPRISES LTD: open a support ticket and our team will get back to you by email as soon as possible."
+    }
+  },
   "nav": {
     "home": "Home",
     "services": "Services",
@@ -14,11 +32,28 @@
   },
   "services": {
     "title": "Our Services",
-    "subTitle": "Our services"
+    "subTitle": "Our services",
+    "development": {
+      "title": "Software development. Architecture and design of complex systems for your business",
+      "p1": "Custom software development is the process of designing, building, integrating, scaling, and upgrading software solutions to address the pressing needs or achieve objectives of your specific business.",
+      "p2": "We deliver custom web, mobile, and desktop software solutions that broadly fall under 3 main categories – management of B2B, B2C interactions, and internal operations. Our software confidently works across all popular browsers, OSes, and mobile platforms, scales to millions of users and delivers immaculate UX through a clear, logical layout and smooth workflows."
+    },
+    "design": {
+      "title": "Design for interactive web applications",
+      "p1": "An interactive web design is a design for websites which uses other inbuilt software, modules or features aimed at creating an environment for a website or web application user to be actively engaged during visit or use as the case may be, thereby improving his or her user experience (UX).",
+      "p2": "Having prior knowledge of your expected users’ profile and their presumed preferences enables the web design’s interactivity to accommodate them. For example, users that do not want to spend much time on your site should not be made to do so. Rather make it simpler for them to get the much-needed information as fast as possible. Such users abandon transactions or site visits when they don’t achieve their aims in a shorter time."
+    },
+    "payments": {
+      "title": "Integration of electronic payment systems",
+      "p1": "Consumers want convenience; it’s one of the reasons that online shopping continues to grow in popularity. A study by BigCommerce found that eCommerce is increasing 23 percent year over year. Moreover, Millennials and Gen Xers — two generations who make up the majority of the U.S. population — spend six hours per week shopping online."
+    }
   },
   "ai": {
     "title": "AI Chatbot",
-    "description": "AI Chatbot is a conversational agent that interacts with users to provide them with information, answer their questions, and help them accomplish tasks."
+    "description": "AI Chatbot is a conversational agent that interacts with users to provide them with information, answer their questions, and help them accomplish tasks.",
+    "point1": "Answers questions about our services around the clock.",
+    "point2": "Helps customers find the right solution without waiting for a support agent.",
+    "point3": "Can be adapted to your business and integrated into your website."
   },
   "contact": {
     "title": "Contact Us",

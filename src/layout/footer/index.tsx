@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { createTranslation } from '@/i18n/server';
+import { localePath } from '@/i18n/settings';
 
 export default async function Footer({ locale }: { locale: string }) {
   const { t } = await createTranslation(locale, 'common');
@@ -15,7 +16,10 @@ export default async function Footer({ locale }: { locale: string }) {
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
               <div className="mb-12 max-w-[360px] lg:mb-16">
-                <Link href={`/${locale}`} className="text-body-color dark:text-body-color-dark mb-8 inline-block">
+                <Link
+                  href={localePath(locale, '')}
+                  className="text-body-color dark:text-body-color-dark mb-8 inline-block"
+                >
                   <strong>WONRIAL ENTERPRISES LTD</strong>
                 </Link>
                 <p className="text-body-color dark:text-body-color-dark mb-9 text-base leading-relaxed">
@@ -74,7 +78,7 @@ export default async function Footer({ locale }: { locale: string }) {
                 <ul>
                   <li>
                     <Link
-                      href={`/${locale}`}
+                      href={localePath(locale, '')}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       {t('nav.home')}
@@ -82,7 +86,7 @@ export default async function Footer({ locale }: { locale: string }) {
                   </li>
                   <li>
                     <Link
-                      href={`/${locale}/services`}
+                      href={localePath(locale, '/services')}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       {t('nav.services')}
@@ -90,7 +94,7 @@ export default async function Footer({ locale }: { locale: string }) {
                   </li>
                   <li>
                     <Link
-                      href={`/${locale}/contact`}
+                      href={localePath(locale, '/contact')}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       {t('nav.contact')}
@@ -106,7 +110,7 @@ export default async function Footer({ locale }: { locale: string }) {
                 <ul>
                   <li>
                     <Link
-                      href={`/${locale}`}
+                      href={localePath(locale, '')}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       {t('footer.tos')}
@@ -114,7 +118,7 @@ export default async function Footer({ locale }: { locale: string }) {
                   </li>
                   <li>
                     <Link
-                      href={`/${locale}`}
+                      href={localePath(locale, '')}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       {t('footer.privacyPolicy')}
@@ -122,7 +126,7 @@ export default async function Footer({ locale }: { locale: string }) {
                   </li>
                   <li>
                     <Link
-                      href={`/${locale}`}
+                      href={localePath(locale, '')}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       {t('footer.refundPolicy')}
@@ -138,7 +142,7 @@ export default async function Footer({ locale }: { locale: string }) {
                 <ul>
                   <li>
                     <Link
-                      href={`/${locale}/contact`}
+                      href={localePath(locale, '/contact')}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       {t('footer.openSupportTicket')}
@@ -146,7 +150,7 @@ export default async function Footer({ locale }: { locale: string }) {
                   </li>
                   <li>
                     <Link
-                      href={`/${locale}`}
+                      href={localePath(locale, '')}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       {t('footer.termsOfUse')}
@@ -154,7 +158,7 @@ export default async function Footer({ locale }: { locale: string }) {
                   </li>
                   <li>
                     <Link
-                      href={`/${locale}`}
+                      href={localePath(locale, '')}
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       {t('footer.support247')}
@@ -167,7 +171,9 @@ export default async function Footer({ locale }: { locale: string }) {
 
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
           <div className="py-8">
-            <p className="text-body-color text-center text-base dark:text-white">&copy; WONRIAL ENTERPRISES LTD 2025</p>
+            <p className="text-body-color text-center text-base dark:text-white">
+              &copy; WONRIAL ENTERPRISES LTD {new Date().getFullYear()}
+            </p>
           </div>
         </div>
         <div className="absolute top-14 right-0 z-[-1]">

@@ -1,9 +1,9 @@
 # WONRIAL Codebase Summary
 
 **Last Updated**: 2026-07-28
-**Version**: 26.07.6
+**Version**: 26.09.0
 **Language**: TypeScript 6.0.3
-**Framework**: Next.js 16.2.12 + React 19.2.8
+**Framework**: Next.js 16.3.6 + React 19.3.0
 **Status**: Recently updated (AI SDK v7 migration, dependency updates)
 
 ## Quick Overview
@@ -120,7 +120,7 @@ wonrial/
 
 **`src/app/api/chat/route.ts`**
 - Streaming AI chat endpoint
-- Uses Vercel AI SDK v7 with dedicated @ai-sdk/groq provider (v4.0.15)
+- Uses Vercel AI SDK v7 with dedicated @ai-sdk/groq provider (v4.0.48)
 - Simplified API implementation using `createGroq()` helper
 - Model: llama3-8b-8192
 - Receives a `UIMessage[]` array in POST body, converted for the model with `await convertToModelMessages()`
@@ -160,10 +160,17 @@ wonrial/
 - Disallows for staging/dev
 
 **`src/app/sitemap.ts`**
-- Generates XML sitemap
-- Includes all locales (en, ru, uk)
-- Includes all pages (home, ai, contact, services)
-- Adds hreflang tags for SEO
+- Generates XML sitemap from the `pages` list in `src/utils/seo.ts`
+- One `<url>` per page per locale (en, ru, uk), 12 in total
+- Each entry carries hreflang alternates for every locale plus `x-default`
+- No `lastModified`: a value that changes on every request teaches Google to ignore it
+
+**`src/utils/seo.ts`**
+- `pageMetadata(locale, page)` builds each page's `generateMetadata` result from the `meta.*` translation keys
+- `localeAlternates(locale, path)` gives every locale a self-referencing canonical and the full hreflang set;
+  pointing ru/uk canonicals at the English page made Google drop them as duplicates
+- Internal links use `localePath(locale, path)` from `src/i18n/settings.ts`, which never adds the `/en` prefix
+  (`proxy.ts` 308-redirects `/en/*` to the bare path)
 
 ### Internationalization
 
@@ -274,11 +281,11 @@ interface MenuItem {
 - Ignores: build/, node_modules/, .next/, .claude/**
 
 **`package.json`**
-- Dependencies: React 19.2.8, Next.js 16.2.12, TypeScript 6.0.3
-- i18n: i18next 26.3.6, react-i18next 17.0.11
-- AI: ai SDK 7.0.40, @ai-sdk/groq 4.0.15, @ai-sdk/react 4.0.43
+- Dependencies: React 19.3.0, Next.js 16.3.6, TypeScript 6.0.3
+- i18n: i18next 26.4.2, react-i18next 17.0.15
+- AI: ai SDK 7.0.114, @ai-sdk/groq 4.0.48, @ai-sdk/react 4.0.117
 - Styling: Tailwind CSS 4.3.3, SASS 1.102.0
-- Dev tools: ESLint 9.39.5, Prettier 3.9.6, TypeScript 6.0.3, eslint-plugin-react-hooks 7.1.1
+- Dev tools: ESLint 10.11.0, Prettier 3.9.9, TypeScript 6.0.3, eslint-plugin-react-hooks 7.1.1
 
 ## Component Architecture
 
@@ -393,8 +400,8 @@ Events sent to Google Analytics
 ## Key Technologies Used
 
 ### Frontend Framework
-- **Next.js 16.2.12**: App Router, server components, built-in optimization
-- **React 19.2.8**: Component library, hooks, concurrent features
+- **Next.js 16.3.6**: App Router, server components, built-in optimization
+- **React 19.3.0**: Component library, hooks, concurrent features
 - **TypeScript 6.0.3**: Type safety, strict mode enabled
 
 ### Styling & Design
@@ -404,15 +411,15 @@ Events sent to Google Analytics
 - **CSS Variables**: Theme colors, spacing, typography
 
 ### Internationalization
-- **i18next 26.3.6**: Translation engine
-- **react-i18next 17.0.11**: React bindings
+- **i18next 26.4.2**: Translation engine
+- **react-i18next 17.0.15**: React bindings
 - **i18next-browser-languagedetector 8.2.1**: Auto locale detection
 - **i18next-resources-to-backend 1.2.1**: Backend integration
 
 ### AI & Chat
-- **ai 7.0.40**: Vercel AI SDK for LLM integration
-- **@ai-sdk/groq 4.0.15**: Dedicated Groq provider for ultra-fast LLM inference
-- **@ai-sdk/react 4.0.43**: React bindings for `useChat` (separate package since AI SDK v5)
+- **ai 7.0.114**: Vercel AI SDK for LLM integration
+- **@ai-sdk/groq 4.0.48**: Dedicated Groq provider for ultra-fast LLM inference
+- **@ai-sdk/react 4.0.117**: React bindings for `useChat` (separate package since AI SDK v5)
 - **createGroq()**: Simplified provider instantiation in API route
 - **Groq**: LLM inference provider (model: llama3-8b-8192, < 100ms latency)
 
@@ -420,10 +427,10 @@ Events sent to Google Analytics
 - **Google Tag Manager**: Event tracking (via env var)
 
 ### Development Tools
-- **ESLint 9.39.5**: Code quality & style enforcement
-- **Prettier 3.9.6**: Code formatting
+- **ESLint 10.11.0**: Code quality & style enforcement
+- **Prettier 3.9.9**: Code formatting
 - **TypeScript Compiler**: Type checking without emit
-- **PostCSS 8.5.24**: CSS transformation pipeline
+- **PostCSS 8.5.28**: CSS transformation pipeline
 - **Autoprefixer 10.5.4**: Browser vendor prefixes not covered by Tailwind (e.g. `-webkit-background-clip`) and prefixes for hand-written CSS/SCSS
 
 ## Build & Deployment
@@ -556,7 +563,8 @@ NODE_ENV                  # development/production
 1. Create `src/app/[locale]/[feature]/page.tsx`
 2. Fetch translations via `await createTranslation(locale, 'common')`
 3. Export layout if custom layout needed
-4. Add to sitemap.ts if public
+4. If public, add it to `pages` in `src/utils/seo.ts`, add `meta.<key>.title`/`description` to every locale,
+   and export `generateMetadata` returning `pageMetadata(locale, '<key>')`
 
 ### Adding New Components
 1. Create component file in `src/components/`

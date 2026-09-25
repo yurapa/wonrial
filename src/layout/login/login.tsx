@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Modal from '@/components/modal/modal';
 import LoginForm, { type AuthMode } from '@/layout/login/login-form';
 import Portal from '@/utils/portal';
-import type { LocaleTypes } from '@/i18n/settings';
+import { localePath, type LocaleTypes } from '@/i18n/settings';
 
 const modalCopy: Record<AuthMode, { title: string; description: string }> = {
   signin: {
@@ -50,7 +50,7 @@ export default function Login() {
             <p className="text-body-color text-center text-base font-medium">
               Don’t you have an account?{' '}
               <Link
-                href={`/${locale}/contact#contact`}
+                href={`${localePath(locale, '/contact')}#contact`}
                 onClick={handleCloseModal}
                 className="text-primary hover:underline"
               >
