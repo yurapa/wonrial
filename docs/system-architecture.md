@@ -234,8 +234,8 @@ UI message stream; text chunks arrive progressively and are reassembled by useCh
 ```
 
 **Implementation**:
-- Uses Vercel AI SDK (`ai` v7.0.40)
-- Dedicated Groq provider (`@ai-sdk/groq` v4.0.15)
+- Uses Vercel AI SDK (`ai` v7.0.114)
+- Dedicated Groq provider (`@ai-sdk/groq` v4.0.48)
 - Simplified setup with `createGroq()` helper function
 - `await convertToModelMessages()` strips UI metadata before the model call
 - Returns `result.toUIMessageStreamResponse()`
@@ -529,13 +529,13 @@ interface MenuItem {
 ## Technology Stack
 
 ### Frontend Framework
-- **Next.js 16.2.12**
+- **Next.js 16.3.6**
   - App Router (not Pages)
   - Server Components (RSC)
   - Static & dynamic rendering
   - Built-in optimization
 
-- **React 19.2.8**
+- **React 19.3.0**
   - Functional components only
   - Hooks (useState, useEffect, etc.)
   - Concurrent rendering (future)
@@ -559,17 +559,17 @@ interface MenuItem {
   - Variables, mixins, nesting
   - Optional (Tailwind preferred)
 
-- **PostCSS 8.5.24**
+- **PostCSS 8.5.28**
   - Tailwind CSS plugin
   - Autoprefixer for vendor prefixes Tailwind's own pipeline omits, and for hand-written CSS/SCSS
 
 ### Internationalization
-- **i18next 26.3.6**
+- **i18next 26.4.2**
   - Translation engine
   - Multiple locale support
   - Namespacing for organization
 
-- **react-i18next 17.0.11**
+- **react-i18next 17.0.15**
   - React hook integration
   - useTranslation() hook
   - Context provider
@@ -583,17 +583,17 @@ interface MenuItem {
   - Server-side rendering support
 
 ### AI & Chat
-- **ai 7.0.40** (Vercel AI SDK)
+- **ai 7.0.114** (Vercel AI SDK)
   - Provider-agnostic LLM integration
   - Streaming support
   - Parts-based UI message model
 
-- **@ai-sdk/groq 4.0.15**
+- **@ai-sdk/groq 4.0.48**
   - Dedicated Groq provider
   - Native Groq API integration
   - Simplified provider initialization with `createGroq()`
 
-- **@ai-sdk/react 4.0.43**
+- **@ai-sdk/react 4.0.117**
   - `useChat` hook, split out of the `ai` package in SDK v5
   - Exposes `messages`, `sendMessage`, `status`; input state is owned by the component
 
@@ -628,7 +628,7 @@ interface MenuItem {
 > monitoring are currently not collected.
 
 ### Development Tools
-- **ESLint 9.39.5**
+- **ESLint 10.11.0**
   - Code quality linting
   - TypeScript parser
   - Next.js plugin
@@ -636,7 +636,7 @@ interface MenuItem {
   - Ignores: build/, node_modules/, .next/, .claude/**
   - Pinned to 9.x while eslint-plugin-react, eslint-plugin-import and eslint-plugin-jsx-a11y lack ESLint 10 peer support
 
-- **Prettier 3.9.6**
+- **Prettier 3.9.9**
   - Code formatting
   - Consistent style
   - Single quotes, 2 spaces

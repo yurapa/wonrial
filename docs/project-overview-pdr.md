@@ -188,31 +188,31 @@ Provide WONRIAL ENTERPRISES with:
 ## Technical Stack
 
 ### Frontend
-- **Framework**: Next.js 16.2.12
+- **Framework**: Next.js 16.3.6
 - **Language**: TypeScript 6.0.3
-- **Runtime**: React 19.2.8
+- **Runtime**: React 19.3.0
 - **Styling**: Tailwind CSS 4.3.3 + SASS 1.102.0
 - **Icons**: react-icons 5.7.0
 - **Theming**: next-themes 0.4.6
 
 ### Internationalization
-- **Library**: i18next 26.3.6
-- **React Binding**: react-i18next 17.0.11
+- **Library**: i18next 26.4.2
+- **React Binding**: react-i18next 17.0.15
 - **Language Detector**: i18next-browser-languagedetector 8.2.1
 - **Backend Integration**: i18next-resources-to-backend 1.2.1
 
 ### AI & API
-- **AI SDK**: ai 7.0.40
-- **LLM Provider**: @ai-sdk/groq 4.0.15
-- **React Bindings**: @ai-sdk/react 4.0.43
+- **AI SDK**: ai 7.0.114
+- **LLM Provider**: @ai-sdk/groq 4.0.48
+- **React Bindings**: @ai-sdk/react 4.0.117
 - **Backend**: Groq native API with ultra-fast inference
 
 ### DevTools
-- **ESLint**: 9.39.5 with Next.js plugin, react-hooks 7.1.1 (ignores: build/, node_modules/, .next/, .claude/**)
+- **ESLint**: 10.11.0 with Next.js plugin, react-hooks 7.1.1 (ignores: build/, node_modules/, .next/, .claude/**)
   - Held at 9.x: eslint-plugin-react, eslint-plugin-import and eslint-plugin-jsx-a11y have no peer support for ESLint 10
-- **Prettier**: 3.9.6 for code formatting
+- **Prettier**: 3.9.9 for code formatting
 - **TypeScript**: 6.0.3 with strict mode
-- **PostCSS**: 8.5.24 with Tailwind plugin
+- **PostCSS**: 8.5.28 with Tailwind plugin
 - **SASS**: 1.102.0 for CSS preprocessing
 
 ### Analytics & Monitoring
