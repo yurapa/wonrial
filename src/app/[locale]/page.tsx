@@ -10,17 +10,13 @@ import ReadyToHelp from '@/components/ready-to-help';
 import Technologies from '@/components/technologies';
 import Testimonials from '@/components/testimonials';
 import { ScrollUpDefault } from '@/components/scroll-to-top';
+import { pageMetadata } from '@/utils/seo';
 
-export const metadata: Metadata = {
-  title: 'Home page :: Wonrial',
-  alternates: {
-    canonical: '/',
-    languages: {
-      ru: '/ru',
-      uk: '/uk',
-    },
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+
+  return pageMetadata(locale, 'home');
+}
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

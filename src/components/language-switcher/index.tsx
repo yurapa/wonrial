@@ -3,6 +3,8 @@
 import { ChangeEvent } from 'react';
 import { useRouter, useParams, useSelectedLayoutSegments } from 'next/navigation';
 
+import { localePath } from '@/i18n/settings';
+
 export default function LanguageSwitcher() {
   const router = useRouter();
   const params = useParams();
@@ -14,7 +16,8 @@ export default function LanguageSwitcher() {
     // This is used by the Header component which is used in `app/[locale]/layout.tsx` file,
     // urlSegments will contain the segments after the locale.
     // We replace the URL with the new locale and the rest of the segments.
-    router.push(`/${newLocale}/${urlSegments.join('/')}`);
+    const path = urlSegments.length ? `/${urlSegments.join('/')}` : '';
+    router.push(localePath(newLocale, path));
   };
 
   return (

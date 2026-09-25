@@ -160,10 +160,17 @@ wonrial/
 - Disallows for staging/dev
 
 **`src/app/sitemap.ts`**
-- Generates XML sitemap
-- Includes all locales (en, ru, uk)
-- Includes all pages (home, ai, contact, services)
-- Adds hreflang tags for SEO
+- Generates XML sitemap from the `pages` list in `src/utils/seo.ts`
+- One `<url>` per page per locale (en, ru, uk), 12 in total
+- Each entry carries hreflang alternates for every locale plus `x-default`
+- No `lastModified`: a value that changes on every request teaches Google to ignore it
+
+**`src/utils/seo.ts`**
+- `pageMetadata(locale, page)` builds each page's `generateMetadata` result from the `meta.*` translation keys
+- `localeAlternates(locale, path)` gives every locale a self-referencing canonical and the full hreflang set;
+  pointing ru/uk canonicals at the English page made Google drop them as duplicates
+- Internal links use `localePath(locale, path)` from `src/i18n/settings.ts`, which never adds the `/en` prefix
+  (`proxy.ts` 308-redirects `/en/*` to the bare path)
 
 ### Internationalization
 
@@ -556,7 +563,8 @@ NODE_ENV                  # development/production
 1. Create `src/app/[locale]/[feature]/page.tsx`
 2. Fetch translations via `await createTranslation(locale, 'common')`
 3. Export layout if custom layout needed
-4. Add to sitemap.ts if public
+4. If public, add it to `pages` in `src/utils/seo.ts`, add `meta.<key>.title`/`description` to every locale,
+   and export `generateMetadata` returning `pageMetadata(locale, '<key>')`
 
 ### Adding New Components
 1. Create component file in `src/components/`

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 import { useTranslation } from '@/i18n/client';
-import type { LocaleTypes } from '@/i18n/settings';
+import { localePath, type LocaleTypes } from '@/i18n/settings';
 import Login from '@/layout/login/login';
 import menuData from '@/layout/header/menuData';
 import LanguageSwitcher from '@/components/language-switcher';
@@ -22,7 +22,7 @@ export default function Header() {
   };
 
   const isMenuActive = (path: string) => {
-    return usePathName === `${path}` || usePathName === `/${path}` || usePathName === `/${locale}${path}`;
+    return usePathName === localePath(locale, path);
   };
 
   // Sticky Navbar
@@ -51,7 +51,7 @@ export default function Header() {
       <div className="container">
         <div className="relative -mx-4 flex items-center justify-between">
           {/*<nav className="sticky top-0 w-full flex items-center flex-wrap bg-gray-800/90 p-3">*/}
-          <Link href={`/${locale}`} className="mr-4 inline-flex items-center p-2">
+          <Link href={localePath(locale, '')} className="mr-4 inline-flex items-center p-2">
             <span className="text-xl font-bold tracking-wide text-black uppercase dark:text-white">WONRIAL</span>
           </Link>
 
@@ -70,7 +70,7 @@ export default function Header() {
                     {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         <Link
-                          href={`/${locale}${menuItem.path}`}
+                          href={localePath(locale, menuItem.path)}
                           className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
                             isMenuActive(menuItem.path)
                               ? 'text-primary dark:text-white'

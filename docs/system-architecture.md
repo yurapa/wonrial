@@ -815,8 +815,9 @@ export const generateMetadata = ({ params }) => {
 
 ### Sitemap & Robots
 - **robots.ts**: Dynamic robots.txt generation
-- **sitemap.ts**: XML sitemap with all locales
-- **hreflang tags**: Locale alternate URLs
+- **sitemap.ts**: XML sitemap, one entry per page per locale
+- **Canonical + hreflang**: every locale is its own canonical and lists en/ru/uk plus `x-default`
+  (`src/utils/seo.ts`)
 
 ### Structured Data
 - **JSON-LD**: Schema.org markup

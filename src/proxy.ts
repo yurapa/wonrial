@@ -10,8 +10,10 @@ export function proxy(request: NextRequest) {
   if (pathname.startsWith(`/${defaultLocale}/`) || pathname === `/${defaultLocale}`) {
     // e.g. incoming request is /en/about
     // The new URL is now /about
+    // 308 is permanent, so search engines consolidate on the unprefixed URL.
     return NextResponse.redirect(
       new URL(pathname.replace(`/${defaultLocale}`, pathname === `/${defaultLocale}` ? '/' : ''), request.url),
+      308,
     );
   }
 
