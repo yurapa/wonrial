@@ -6,17 +6,13 @@ import { createTranslation } from '@/i18n/server';
 import Layout from '@/layout/layout/layout';
 import ContactInfo from '@/components/contact/contact-info';
 import ContactForm from '@/components/contact/contact-form';
+import { pageMetadata } from '@/utils/seo';
 
-export const metadata: Metadata = {
-  title: 'Contact Us :: Wonrial',
-  alternates: {
-    canonical: '/contact',
-    languages: {
-      ru: '/ru/contact',
-      uk: '/uk/contact',
-    },
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+
+  return pageMetadata(locale, 'contact');
+}
 
 export default async function Contact({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

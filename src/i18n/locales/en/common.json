@@ -1,4 +1,22 @@
 {
+  "meta": {
+    "home": {
+      "title": "WONRIAL – Professional Technology Assistance",
+      "description": "WONRIAL ENTERPRISES LTD builds custom software, interactive web applications and AI chatbots for businesses. We make technology accessible."
+    },
+    "services": {
+      "title": "Our Services – Software Development and Web Design | WONRIAL",
+      "description": "Custom web, mobile and desktop software, architecture of complex systems and interactive web application design from WONRIAL ENTERPRISES LTD."
+    },
+    "ai": {
+      "title": "AI Chatbot for Business Support | WONRIAL",
+      "description": "Ask the WONRIAL AI chatbot about our services and get instant answers - a conversational assistant for customer support and business tasks."
+    },
+    "contact": {
+      "title": "Contact Us | WONRIAL",
+      "description": "Contact WONRIAL ENTERPRISES LTD: open a support ticket and our team will get back to you by email as soon as possible."
+    }
+  },
   "nav": {
     "home": "Home",
     "services": "Services",
@@ -18,7 +36,10 @@
   },
   "ai": {
     "title": "AI Chatbot",
-    "description": "AI Chatbot is a conversational agent that interacts with users to provide them with information, answer their questions, and help them accomplish tasks."
+    "description": "AI Chatbot is a conversational agent that interacts with users to provide them with information, answer their questions, and help them accomplish tasks.",
+    "point1": "Answers questions about our services around the clock.",
+    "point2": "Helps customers find the right solution without waiting for a support agent.",
+    "point3": "Can be adapted to your business and integrated into your website."
   },
   "contact": {
     "title": "Contact Us",

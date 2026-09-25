@@ -1,46 +1,23 @@
 import { MetadataRoute } from 'next';
 
+import { locales } from '@/i18n/settings';
+import { absoluteUrl, localeAlternates, pages } from '@/utils/seo';
+
+// Every locale version gets its own <url> entry: Google only treats ru/uk pages as first-class
+// when they are listed, not just referenced as alternates of the English page.
+// `lastModified` is left out on purpose - a value that changes on every request teaches Google
+// to ignore it.
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: 'https://wonrial.com',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          ru: 'https://wonrial.com/ru',
-          uk: 'https://wonrial.com/uk',
+  return pages.flatMap(({ path }) =>
+    locales.map((locale) => {
+      const { canonical, languages } = localeAlternates(locale, path);
+
+      return {
+        url: absoluteUrl(canonical),
+        alternates: {
+          languages: Object.fromEntries(Object.entries(languages).map(([lng, href]) => [lng, absoluteUrl(href)])),
         },
-      },
-    },
-    {
-      url: 'https://wonrial.com/services',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          ru: 'https://wonrial.com/ru/services',
-          uk: 'https://wonrial.com/uk/services',
-        },
-      },
-    },
-    {
-      url: 'https://wonrial.com/ai',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          ru: 'https://wonrial.com/ru/ai',
-          uk: 'https://wonrial.com/uk/ai',
-        },
-      },
-    },
-    {
-      url: 'https://wonrial.com/contact',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          ru: 'https://wonrial.com/ru/contact',
-          uk: 'https://wonrial.com/uk/contact',
-        },
-      },
-    },
-  ];
+      };
+    }),
+  );
 }

@@ -9,6 +9,7 @@ import Footer from '@/layout/footer';
 import { Providers } from '@/app/providers';
 import { TopBanner } from '@/components/top-banner';
 import { ScrollToTopButton } from '@/components/scroll-to-top';
+import { siteUrl } from '@/utils/seo';
 
 import '@/styles/normalize.css';
 import '@/styles/global.css';
@@ -17,8 +18,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'WONRIAL',
-  description: 'WONRIAL ENTERPRISES LTD official web-sait',
-  metadataBase: new URL('https://wonrial.com'),
+  description: 'WONRIAL ENTERPRISES LTD official website',
+  metadataBase: new URL(siteUrl),
   icons: {
     icon: '/favicon.ico',
   },

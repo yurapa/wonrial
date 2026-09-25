@@ -3,20 +3,15 @@ import { Metadata } from 'next';
 import { createTranslation } from '@/i18n/server';
 import Layout from '@/layout/layout/layout';
 import { AIChat } from '@/components/ai';
+import { pageMetadata } from '@/utils/seo';
 
 import utilStyles from '@/styles/utils.module.css';
 
-export const metadata: Metadata = {
-  title: 'AI ChatBot for Business Support | Wonrial',
-  description: 'Wonrial AI ChatBot – Ask Questions & Get Answers',
-  alternates: {
-    canonical: '/ai',
-    languages: {
-      ru: '/ru/ai',
-      uk: '/uk/ai',
-    },
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+
+  return pageMetadata(locale, 'ai');
+}
 
 export default async function AI({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -32,6 +27,11 @@ export default async function AI({ params }: { params: Promise<{ locale: string 
               <div className="mb-8 max-w-[570px] md:mb-0 lg:mb-12">
                 <h1 className="mb-5 text-2xl font-bold text-black sm:text-3xl dark:text-white">{t('ai.title')}</h1>
                 <p className="text-body-color text-base leading-relaxed font-medium">{t('ai.description')}</p>
+                <ul className="text-body-color mt-5 list-disc space-y-2 pl-5 text-base leading-relaxed">
+                  <li>{t('ai.point1')}</li>
+                  <li>{t('ai.point2')}</li>
+                  <li>{t('ai.point3')}</li>
+                </ul>
               </div>
             </div>
           </div>

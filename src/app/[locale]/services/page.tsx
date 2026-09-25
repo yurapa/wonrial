@@ -4,19 +4,15 @@ import cx from 'classnames';
 
 import { createTranslation } from '@/i18n/server';
 import Layout from '@/layout/layout/layout';
+import { pageMetadata } from '@/utils/seo';
 
 import utilStyles from '@/styles/utils.module.css';
 
-export const metadata: Metadata = {
-  title: 'Our Services :: Wonrial',
-  alternates: {
-    canonical: '/services',
-    languages: {
-      ru: '/ru/services',
-      uk: '/uk/services',
-    },
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+
+  return pageMetadata(locale, 'services');
+}
 
 export default async function Services({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
