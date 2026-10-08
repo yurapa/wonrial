@@ -38,7 +38,7 @@ export default async function AI({ params }: { params: Promise<{ locale: string 
         </div>
       </section>
 
-      <div className={utilStyles.container}>{isAI ? <AIChat /> : <h2>For registered users only</h2>}</div>
+      <div className={utilStyles.container}>{isAI ? <AIChat /> : <h2>{t('ai.registeredOnly')}</h2>}</div>
     </Layout>
   );
 }

@@ -152,7 +152,7 @@ src/
 **Type Definitions**:
 - Format: `[name].ts` in `src/types/`
 - Use kebab-case for filenames
-- Examples: `feature.ts`, `testimonial.ts`, `menu.ts`
+- Examples: `feature.ts`, `contact.ts`, `menu.ts`
 
 **API Routes**:
 - Format: `route.ts` in API folder
