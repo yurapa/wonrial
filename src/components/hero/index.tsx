@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { createTranslation } from '@/i18n/server';
-import { LocaleTypes } from '@/i18n/settings';
+import { localePath, LocaleTypes } from '@/i18n/settings';
 import { EventButton } from '@/components/analytics/event-button';
 
 export default async function Hero({ locale }: { locale: LocaleTypes }) {
@@ -18,16 +18,21 @@ export default async function Hero({ locale }: { locale: LocaleTypes }) {
               <h1 className="mb-5 text-3xl leading-tight font-bold text-black sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight dark:text-white">
                 {t('homePageBanner.title')}
               </h1>
-              <p className="text-body-color dark:text-body-color-dark mb-12 text-base !leading-relaxed sm:text-lg md:text-xl">
+              <p className="text-body-color dark:text-body-color-dark mb-6 text-base !leading-relaxed sm:text-lg md:text-xl">
                 {t('homePageBanner.subTitle')}
               </p>
+              <p className="text-body-color dark:text-body-color-dark mb-12 text-base !leading-relaxed">
+                {t('homePageBanner.description')}
+              </p>
               <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <EventButton />
+                <EventButton href={localePath(locale, '/contact')} event="Hero contact button was clicked">
+                  {t('homePageBanner.ctaContact')}
+                </EventButton>
                 <Link
-                  href="/"
+                  href={localePath(locale, '/services')}
                   className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
                 >
-                  Star on GitHub
+                  {t('homePageBanner.ctaServices')}
                 </Link>
               </div>
             </div>

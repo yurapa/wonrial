@@ -1,6 +1,13 @@
 import Image from 'next/image';
 
-const About2 = () => {
+import { createTranslation } from '@/i18n/server';
+import { LocaleTypes } from '@/i18n/settings';
+
+const steps = ['discovery', 'development', 'launch'];
+
+export default async function About2({ locale }: { locale: LocaleTypes }) {
+  const { t } = await createTranslation(locale, 'common');
+
   return (
     <section className="py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -12,13 +19,13 @@ const About2 = () => {
             >
               <Image
                 src="/images/about/about-image-2.svg"
-                alt="about image"
+                alt=""
                 fill
                 className="drop-shadow-three dark:hidden dark:drop-shadow-none"
               />
               <Image
                 src="/images/about/about-image-2-dark.svg"
-                alt="about image"
+                alt=""
                 fill
                 className="drop-shadow-three hidden dark:block dark:drop-shadow-none"
               />
@@ -26,37 +33,20 @@ const About2 = () => {
           </div>
           <div className="w-full px-4 lg:w-1/2">
             <div className="wow fadeInUp max-w-[470px]" data-wow-delay=".2s">
-              <div className="mb-9">
-                <h3 className="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl dark:text-white">
-                  Bug free code
-                </h3>
-                <p className="text-body-color text-base leading-relaxed font-medium sm:text-lg sm:leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua.
-                </p>
-              </div>
-              <div className="mb-9">
-                <h3 className="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl dark:text-white">
-                  Premier support
-                </h3>
-                <p className="text-body-color text-base leading-relaxed font-medium sm:text-lg sm:leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-                </p>
-              </div>
-              <div className="mb-1">
-                <h3 className="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl dark:text-white">
-                  Next.js
-                </h3>
-                <p className="text-body-color text-base leading-relaxed font-medium sm:text-lg sm:leading-relaxed">
-                  Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt consectetur adipiscing elit setim.
-                </p>
-              </div>
+              {steps.map((step, index) => (
+                <div key={step} className={index === steps.length - 1 ? 'mb-1' : 'mb-9'}>
+                  <h3 className="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl dark:text-white">
+                    {t(`home.howWeWork.${step}.title`)}
+                  </h3>
+                  <p className="text-body-color text-base leading-relaxed font-medium sm:text-lg sm:leading-relaxed">
+                    {t(`home.howWeWork.${step}.paragraph`)}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default About2;
+}

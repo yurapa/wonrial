@@ -38,18 +38,15 @@ wonrial/
 │   │   ├── analytics/         # GTM event tracking
 │   │   ├── button/            # Reusable button
 │   │   ├── contact/           # Contact info component
-│   │   ├── features/          # Feature cards (6 features)
+│   │   ├── features/          # Service cards (6 services)
 │   │   ├── footer/            # Footer navigation
 │   │   ├── header/            # Header/navigation
 │   │   ├── hero/              # Hero landing section
 │   │   ├── language-switcher/ # Locale selector
 │   │   ├── modal/             # Accessible modal
-│   │   ├── pricing/           # Pricing plans
 │   │   ├── ready-to-help/     # CTA section
 │   │   ├── scroll-to-top/     # Back to top button
 │   │   ├── section-title/     # Section headers
-│   │   ├── technologies/      # Tech partner logos
-│   │   ├── testimonials/      # Social proof (3+ reviews)
 │   │   ├── theme-switcher/    # Dark/light toggle
 │   │   └── top-banner/        # Announcement banner
 │   ├── i18n/                  # Internationalization
@@ -71,9 +68,7 @@ wonrial/
 │   │   └── utils.module.css   # Utility classes
 │   ├── types/                 # TypeScript type definitions
 │   │   ├── feature.ts         # Feature card type
-│   │   ├── menu.ts            # Navigation menu type
-│   │   ├── tech.ts            # Technology type
-│   │   └── testimonial.ts     # Testimonial type
+│   │   └── menu.ts            # Navigation menu type
 │   ├── utils/                 # Utility functions
 │   │   └── portal.tsx         # React Portal component
 │   ├── proxy.ts               # API proxy/client
@@ -107,14 +102,12 @@ wonrial/
 - Includes header and footer
 
 **`src/app/[locale]/page.tsx`**
-- Home page with 7 sections:
-  1. Hero section (CTA)
-  2. Features grid (6 features)
-  3. Pricing plans
-  4. Testimonials (3+)
-  5. About company
-  6. Technologies/partners
-  7. Ready to help (CTA with modal)
+- Home page with 5 sections, all text translated via `home.*` keys in `common.json`:
+  1. Hero section (company summary, Contact and Services CTAs)
+  2. Features grid (6 services)
+  3. Ready to help
+  4. About: why WONRIAL (About1)
+  5. How we work: 3 steps (About2)
 
 ### API Routes
 
@@ -226,27 +219,6 @@ interface Feature {
 }
 ```
 
-**`src/types/testimonial.ts`** - Testimonial type
-```typescript
-interface Testimonial {
-  id: string
-  name: string
-  company: string
-  text: string
-  rating: number
-}
-```
-
-**`src/types/tech.ts`** - Technology partner type
-```typescript
-interface Technology {
-  id: string
-  name: string
-  logo: string
-  url?: string
-}
-```
-
 **`src/types/menu.ts`** - Navigation menu type
 ```typescript
 interface MenuItem {
@@ -298,12 +270,9 @@ interface MenuItem {
 
 **Landing Page Sections** (10)
 - Hero: Main headline + CTA button
-- Features: 6 feature cards in grid
-- Pricing: Plan cards with comparison
-- Testimonials: 3+ customer reviews
-- About: Company information (2 variants)
-- Technologies: Partner logos grid
-- ReadyToHelp: Final CTA section
+- Features: 6 service cards in grid
+- About: Why WONRIAL (About1) and how we work (About2)
+- ReadyToHelp: CTA section
 - TopBanner: Announcement banner
 
 **UI Components** (8)

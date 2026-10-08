@@ -27,7 +27,7 @@ export default async function Footer({ locale }: { locale: string }) {
                   <br />
                   {t('footer.registrationNumber')}: HE 445780
                   {/*
-                    <strong>Address:</strong> Vasili Michailidi, 9, 3026, Limassol, Cyprus
+                    <strong>{t('footer.address')}:</strong> Vasili Michailidi, 9, 3026, Limassol, Cyprus
                    */}
                 </p>
 
@@ -352,7 +352,7 @@ export default async function Footer({ locale }: { locale: string }) {
             <strong>Registration number:</strong> HE 445780
           </p>
           <p>
-            <strong>Address:</strong> Vasili Michailidi, 9, 3026, Limassol, Cyprus
+            <strong>{t('footer.address')}:</strong> Vasili Michailidi, 9, 3026, Limassol, Cyprus
           </p>
         </div>
 

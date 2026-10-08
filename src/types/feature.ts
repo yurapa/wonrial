@@ -3,6 +3,6 @@ import { ReactElement } from 'react';
 export type Feature = {
   id: number;
   icon: ReactElement;
-  title: string;
-  paragraph: string;
+  // Translation key under `home.features.items`
+  key: string;
 };
