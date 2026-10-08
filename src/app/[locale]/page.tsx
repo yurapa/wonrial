@@ -2,13 +2,10 @@ import { Metadata } from 'next';
 
 import Layout from '@/layout/layout/layout';
 import Hero from '@/components/hero';
-import Pricing from '@/components/pricing';
 import Features from '@/components/features';
 import About1 from '@/components/about/about-1';
 import About2 from '@/components/about/about-2';
 import ReadyToHelp from '@/components/ready-to-help';
-import Technologies from '@/components/technologies';
-import Testimonials from '@/components/testimonials';
 import { ScrollUpDefault } from '@/components/scroll-to-top';
 import { pageMetadata } from '@/utils/seo';
 
@@ -25,13 +22,10 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     <Layout isHomePage>
       <ScrollUpDefault />
       <Hero locale={locale} />
-      <Features />
-      <ReadyToHelp />
-      <Technologies />
-      <About1 />
-      <About2 />
-      <Testimonials />
-      <Pricing />
+      <Features locale={locale} />
+      <ReadyToHelp locale={locale} />
+      <About1 locale={locale} />
+      <About2 locale={locale} />
     </Layout>
   );
 }

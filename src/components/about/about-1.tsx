@@ -1,4 +1,7 @@
 import Image from 'next/image';
+
+import { createTranslation } from '@/i18n/server';
+import { LocaleTypes } from '@/i18n/settings';
 import SectionTitle from '../section-title/section-title';
 
 const checkIcon = (
@@ -7,7 +10,14 @@ const checkIcon = (
   </svg>
 );
 
-const About1 = () => {
+const pointsColumns = [
+  ['custom', 'scalable', 'devices'],
+  ['communication', 'process', 'support'],
+];
+
+export default async function About1({ locale }: { locale: LocaleTypes }) {
+  const { t } = await createTranslation(locale, 'common');
+
   const List = ({ text }: { text: string }) => (
     <p className="text-body-color mb-5 flex items-center text-lg font-medium">
       <span className="bg-primary/10 text-primary mr-4 flex h-[30px] w-[30px] items-center justify-center rounded-md">
@@ -23,25 +33,17 @@ const About1 = () => {
         <div className="border-body-color/[.15] border-b pb-16 md:pb-20 lg:pb-28 dark:border-white/[.15]">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
-              <SectionTitle
-                title="Crafted for Startup, SaaS and Business Sites."
-                paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
-                mb="44px"
-              />
+              <SectionTitle title={t('home.about.title')} paragraph={t('home.about.paragraph')} mb="44px" />
 
               <div className="wow fadeInUp mb-12 max-w-[570px] lg:mb-0" data-wow-delay=".15s">
                 <div className="mx-[-12px] flex flex-wrap">
-                  <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Premium quality" />
-                    <List text="Tailwind CSS" />
-                    <List text="Use for lifetime" />
-                  </div>
-
-                  <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Next.js" />
-                    <List text="Rich documentation" />
-                    <List text="Developer friendly" />
-                  </div>
+                  {pointsColumns.map((column) => (
+                    <div key={column[0]} className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
+                      {column.map((point) => (
+                        <List key={point} text={t(`home.about.points.${point}`)} />
+                      ))}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -50,13 +52,13 @@ const About1 = () => {
               <div className="wow fadeInUp relative mx-auto aspect-[25/24] max-w-[500px] lg:mr-0" data-wow-delay=".2s">
                 <Image
                   src="/images/about/about-image.svg"
-                  alt="about-image"
+                  alt=""
                   fill
                   className="drop-shadow-three mx-auto max-w-full lg:mr-0 dark:hidden dark:drop-shadow-none"
                 />
                 <Image
                   src="/images/about/about-image-dark.svg"
-                  alt="about-image"
+                  alt=""
                   fill
                   className="drop-shadow-three mx-auto hidden max-w-full lg:mr-0 dark:block dark:drop-shadow-none"
                 />
@@ -67,6 +69,4 @@ const About1 = () => {
       </div>
     </section>
   );
-};
-
-export default About1;
+}

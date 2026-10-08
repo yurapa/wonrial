@@ -25,7 +25,73 @@
   },
   "homePageBanner": {
     "title": "Professional Technology Assistance",
-    "subTitle": "We make technology accessible!"
+    "subTitle": "We make technology accessible!",
+    "description": "WONRIAL ENTERPRISES LTD is a software development company registered in Cyprus. We design and build custom web, mobile and desktop applications, integrate payment systems and AI chatbots, and support them after launch.",
+    "ctaContact": "Contact us",
+    "ctaServices": "Our services"
+  },
+  "home": {
+    "features": {
+      "title": "What We Do",
+      "paragraph": "From the first idea to a stable product in production: we cover the full software development cycle for your business.",
+      "items": {
+        "development": {
+          "title": "Custom Software Development",
+          "paragraph": "Web, mobile and desktop applications built around your processes: B2B and B2C platforms, customer portals and internal tools that work in all popular browsers and on any device."
+        },
+        "architecture": {
+          "title": "Architecture of Complex Systems",
+          "paragraph": "We design the structure of your system before writing code, so it stays reliable, secure and ready to scale as your audience and workload grow."
+        },
+        "design": {
+          "title": "Interactive Web Design",
+          "paragraph": "Clear, logical interfaces that help users find what they need quickly. Good UX means fewer abandoned visits and more completed orders."
+        },
+        "payments": {
+          "title": "Payment System Integration",
+          "paragraph": "We connect online payment providers to your website or application, so customers can pay quickly, safely and in a familiar way."
+        },
+        "ai": {
+          "title": "AI Chatbots",
+          "paragraph": "A conversational assistant that answers customer questions around the clock and can be trained on information about your business. Try it on our AI page."
+        },
+        "support": {
+          "title": "Support and Maintenance",
+          "paragraph": "After launch we keep your product up to date: we fix issues, update dependencies and add new features as your business evolves."
+        }
+      }
+    },
+    "readyToHelp": {
+      "title": "We Are Ready to Help",
+      "paragraph": "Tell us about your task, whether it is a new product, an upgrade of an existing system or a single feature. We will suggest a solution, estimate the work and agree on a plan that fits your budget.",
+      "imageAlt": "A team discussing a project together"
+    },
+    "about": {
+      "title": "Why Businesses Choose WONRIAL",
+      "paragraph": "We build software for a specific business task, not from a template. Every project starts with understanding your goals, users and processes, and ends with a product your team can rely on every day.",
+      "points": {
+        "custom": "Solutions built for your business",
+        "scalable": "Scalable architecture",
+        "devices": "Works on any device",
+        "communication": "Clear communication",
+        "process": "Transparent process",
+        "support": "Support after launch"
+      }
+    },
+    "howWeWork": {
+      "discovery": {
+        "title": "1. Discovery and Planning",
+        "paragraph": "We study your business, users and goals, agree on the scope and priorities, and propose an architecture and a work plan."
+      },
+      "development": {
+        "title": "2. Design and Development",
+        "paragraph": "We design the interface and build the product in short iterations, showing you results regularly so you can give feedback early."
+      },
+      "launch": {
+        "title": "3. Launch and Support",
+        "paragraph": "We test and launch the product, monitor how it works and keep improving it based on feedback from real users."
+      }
+    }
   },
   "about": {
     "title": "About Us"
@@ -53,7 +119,8 @@
     "description": "AI Chatbot is a conversational agent that interacts with users to provide them with information, answer their questions, and help them accomplish tasks.",
     "point1": "Answers questions about our services around the clock.",
     "point2": "Helps customers find the right solution without waiting for a support agent.",
-    "point3": "Can be adapted to your business and integrated into your website."
+    "point3": "Can be adapted to your business and integrated into your website.",
+    "registeredOnly": "For registered users only"
   },
   "contact": {
     "title": "Contact Us",
@@ -76,6 +143,13 @@
       "body": "Thanks for reaching out to WONRIAL. We received your message and will get back to you as soon as possible.",
       "yourMessage": "Your message:",
       "signature": "— The WONRIAL team"
+    },
+    "info": {
+      "title": "Let us tailor a service package that meets your needs.",
+      "paragraph": "Tell us a little about your business, and we will get back to you with some ideas as soon as possible.",
+      "hoursTitle": "Hours",
+      "weekdays": "Monday – Friday: 09:00 – 17:00",
+      "weekend": "Saturday – Sunday: closed"
     }
   },
   "footer": {
@@ -89,6 +163,7 @@
     "termsOfUse": "Terms of Use",
     "support247": "24/7 Supports",
     "legalEntity": "Legal entity registered under the law of Cyprus",
-    "registrationNumber": "Registration number"
+    "registrationNumber": "Registration number",
+    "address": "Address"
   }
 }

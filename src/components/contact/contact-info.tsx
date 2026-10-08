@@ -1,10 +1,16 @@
 'use client';
 
+import { useParams } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
+import { useTranslation } from '@/i18n/client';
+import type { LocaleTypes } from '@/i18n/settings';
+
 const ContactInfo = () => {
   const { theme } = useTheme();
+  const { locale } = useParams();
+  const { t } = useTranslation(locale as LocaleTypes, 'common');
   // The server cannot know the theme, so the first client render has to match
   // the server output. Only after mounting may the gradients follow the theme.
   const [mounted, setMounted] = useState(false);
@@ -20,27 +26,17 @@ const ContactInfo = () => {
       className="wow fadeInUp shadow-three dark:bg-gray-dark relative z-10 rounded-sm bg-white p-8 sm:p-11 lg:p-8 xl:p-11"
       data-wow-delay=".2s"
     >
-      <h3 className="mb-4 text-2xl leading-tight font-bold text-black dark:text-white">
-        Let us tailor a service package that meets your needs.
-      </h3>
+      <h3 className="mb-4 text-2xl leading-tight font-bold text-black dark:text-white">{t('contact.info.title')}</h3>
       <p className="border-body-color border-opacity-25 text-body-color dark:border-opacity-25 mb-11 border-b pb-11 text-base leading-relaxed dark:border-white">
-        Tell us a little about your business, and we will get back to you with some ideas as soon as possible.
+        {t('contact.info.paragraph')}
       </p>
 
       <h3>WONRIAL</h3>
       <p>Vasili Michailidi, 9, 3026, Limassol, Cyprus</p>
-      <h3>Hours</h3>
+      <h3>{t('contact.info.hoursTitle')}</h3>
       <p>
-        Mon 09:00 – 17:00 <br />
-        Tue 09:00 – 17:00 <br /> Wed 09:00 – 17:00 <br />
-        Thu 09:00 – 17:00 <br />
-        Fri 09:00 – 17:00 <br />
-        Sat Closed <br />
-        Sun Closed
-      </p>
-      <p>
-        Monday - Friday: 9am - 5pm <br />
-        Saturday - Sunday: Closed
+        {t('contact.info.weekdays')} <br />
+        {t('contact.info.weekend')}
       </p>
 
       <div>

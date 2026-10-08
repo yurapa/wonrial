@@ -1,7 +1,7 @@
 # WONRIAL Code Standards & Guidelines
 
 **Last Updated**: 2026-07-28
-**Version**: 26.09.0
+**Version**: 26.10.0
 **Applies To**: All TypeScript/TSX code in WONRIAL project
 **Recent Changes**: AI SDK v7 client/server patterns, TypeScript 6, whole codebase is now `.ts`/`.tsx`
 
@@ -152,7 +152,7 @@ src/
 **Type Definitions**:
 - Format: `[name].ts` in `src/types/`
 - Use kebab-case for filenames
-- Examples: `feature.ts`, `testimonial.ts`, `menu.ts`
+- Examples: `feature.ts`, `contact.ts`, `menu.ts`
 
 **API Routes**:
 - Format: `route.ts` in API folder

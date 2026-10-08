@@ -1,7 +1,7 @@
 # WONRIAL ENTERPRISES LTD - Project Overview & PDR
 
 **Project Name**: WONRIAL
-**Version**: 26.09.0
+**Version**: 26.10.0
 **Last Updated**: 2026-07-28
 **Status**: Active Development
 **Production URL**: [wonrial.com](https://wonrial.com)
@@ -62,12 +62,10 @@ Provide WONRIAL ENTERPRISES with:
 ## Key Features
 
 ### 1. Modern Landing Page
-- **7 Sections**: Hero, Features, Pricing, Testimonials, About, Technologies, CTA
-- **Call-to-Action**: "Ready to Help" section with modal
-- **Hero Section**: Dynamic introduction with theme-aware backgrounds
-- **Features Grid**: 6 feature cards showcasing services
-- **Testimonials**: Social proof with 3+ customer testimonials
-- **Pricing Plans**: Tiered pricing with comparison table
+- **5 Sections**: Hero, Features, Ready to Help, About (why WONRIAL), How we work
+- **Hero Section**: Company summary with Contact and Services CTAs
+- **Features Grid**: 6 cards showcasing services
+- **Fully translated**: every section is rendered from `common.json` in EN, RU and UK, so locale versions are not duplicates of each other
 
 ### 2. Multilingual Support (i18n)
 - **3 Locales**: English (en), Russian (ru), Ukrainian (uk)
@@ -226,10 +224,7 @@ Provide WONRIAL ENTERPRISES with:
 Components (31 total):
 ├── hero/              # Landing hero section
 ├── features/          # 6 feature cards with icons
-├── pricing/          # Pricing plans comparison
-├── testimonials/     # Customer testimonials (3+)
 ├── about/            # About company sections
-├── technologies/     # Tech partner logos
 ├── contact/          # Contact information/form
 ├── ai/               # AI chat interface
 ├── ready-to-help/    # CTA section
